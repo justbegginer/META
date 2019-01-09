@@ -10,6 +10,7 @@ namespace ConsoleApp15
     {
         static void Main(string[] args)
         {
+            //r
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("                  ДОБРО ПОЖАЛОВАТЬ В ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -20,9 +21,9 @@ namespace ConsoleApp15
             Console.WriteLine("                ||      ||  ||||||      ||||    ||        || ");
             Console.ResetColor();
             Console.WriteLine("\n" + "\n" + "\n" + "привет ! это программа имеет арсенал подпрограмм ,с которыми ты можешь работать." + "\n" + "P.S-программист начинающий ,поэтому не будь слишком строг.");
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("Вы всегда можете вызвать мануал словом man или help ");
-            Console.ResetColor();
+            //Console.BackgroundColor = ConsoleColor.DarkBlue;
+            //Console.WriteLine("Вы всегда можете вызвать мануал словом man или help ");
+            //Console.ResetColor();
             Console.WriteLine("                 ПОДПРОГРАММЫ");
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("1-Теорема Пифагора(нахождение катетов или гипотенузы).");

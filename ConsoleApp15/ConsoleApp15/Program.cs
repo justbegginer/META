@@ -10,6 +10,8 @@ namespace ConsoleApp15
     {
         static void Main(string[] args)
         {
+            
+            
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("                  ДОБРО ПОЖАЛОВАТЬ В ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -38,8 +40,9 @@ namespace ConsoleApp15
             Console.WriteLine("6-Хочешь радугу?");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("7-Нахождение факториала");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("8-Нахождение синуса ,косинуса,тангенса,котангенса. ");
             Console.ResetColor();
-
             Console.WriteLine("*УКАЖИТЕ НОМЕР ОПЕРАЦИИ*");
             int thebeggining = 0;
             usersfalsesint(thebeggining,out thebeggining);
@@ -58,13 +61,16 @@ namespace ConsoleApp15
                     guess();
                     break;
                 case 5:
-                    area();
+                    Area.area();
                     break;
                 case 6:
                     rainbowchoice();
                     break;
                 case 7:
                     f();
+                    break;
+                case 8:
+                    trigonometrya.trig();
                     break;
                 default:
                     controlstr0();
@@ -486,183 +492,211 @@ namespace ConsoleApp15
         {
 
         }
-        public static void area()
+        class Area
         {
-            Console.WriteLine("Привет,если ты сюда попал значит ты хочешь найти площадь.Ну что ж выбери способ" + "\n" + "1-Найдём площадь по высоте и основанию(треугольник)");
-            Console.ForegroundColor = ConsoleColor.Green;
-            //!!! а может заюзать метод с рандомными цветами(когда сделаю)
-            Console.WriteLine("S= 1/2 * h * a");
-            Console.ResetColor();
-            Console.WriteLine("2 - Найдём площадь по формуле Герона.(треугольник)");
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("S=√p(p-a)(p-b)(p-c)");
-            Console.ResetColor();
-            Console.WriteLine("3-Нахождение площади квадрата по диагонали");
-            Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("S=d^2/2");
-            Console.ResetColor();
-            Console.WriteLine("4-Нахождение площади круга");
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine("S=П*R^2");
-            Console.ResetColor();
-            Console.WriteLine("5-Нахождение площади параллелограмма");
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("S=a*h");
-            Console.ResetColor();
-            Console.WriteLine("6-Нахождение площади трапеции");
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("S=(a+b)/2*h");
-            Console.ResetColor();
-            Console.WriteLine("Условные обозначения");
-            Console.ResetColor();
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("a,b-стороны");
-            Console.WriteLine("d-диагональ");
-            Console.WriteLine("p-полупериметр");
-            Console.WriteLine("R-радиус");
-            Console.WriteLine("h-высота");
-            Console.WriteLine("П-число Пи(округлённое до 3,14)");
-            Console.ResetColor();
-            int g = 0;
-            usersfalsesint(g, out g);
-            switch (g)
+            public static void area()
             {
-                case 1:
-                    simple();
-                    break;
-                case 2:
-                    geronesformule();
-                    break;
-                case 3:
-                    square();
-                    break;
-                case 4:
-                    circle();
-                    break;
-                case 5:
-                    parallelogram();
-                    break;
-                case 6:
-                    trapeze();
-                    break;
-                default:
-                    controlstr0();
-                    break;
+                Console.WriteLine("Привет,если ты сюда попал значит ты хочешь найти площадь.Ну что ж выбери способ" + "\n" + "1-Найдём площадь по высоте и основанию(треугольник)");
+                Console.ForegroundColor = ConsoleColor.Green;
+                //!!! а может заюзать метод с рандомными цветами(когда сделаю)
+                Console.WriteLine("S= 1/2 * h * a");
+                Console.ResetColor();
+                Console.WriteLine("2 - Найдём площадь по формуле Герона.(треугольник)");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("S=√p(p-a)(p-b)(p-c)");
+                Console.ResetColor();
+                Console.WriteLine("3-Нахождение площади квадрата по диагонали");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("S=d^2/2");
+                Console.ResetColor();
+                Console.WriteLine("4-Нахождение площади круга");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine("S=П*R^2");
+                Console.ResetColor();
+                Console.WriteLine("5-Нахождение площади параллелограмма");
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine("S=a*h");
+                Console.ResetColor();
+                Console.WriteLine("6-Нахождение площади трапеции");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("S=(a+b)/2*h");
+                Console.ResetColor();
+                Console.WriteLine("7-Нахождение площади");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("S=a*b*sin(между ними)");
+                Console.WriteLine("Условные обозначения");
+                Console.ResetColor();
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine("a,b-стороны");
+                Console.WriteLine("d-диагональ");
+                Console.WriteLine("p-полупериметр");
+                Console.WriteLine("R-радиус");
+                Console.WriteLine("h-высота");
+                Console.WriteLine("П-число Пи(округлённое до 3,14)");
+                Console.ResetColor();
+                int g = 0;
+                usersfalsesint(g, out g);
+                switch (g)
+                {
+                    case 1:
+                        simple();
+                        break;
+                    case 2:
+                        geronesformule();
+                        break;
+                    case 3:
+                        square();
+                        break;
+                    case 4:
+                        circle();
+                        break;
+                    case 5:
+                        parallelogram();
+                        break;
+                    case 6:
+                        trapeze();
+                        break;
+                    case 7:
+
+                        break;
+                    default:
+                        controlstr0();
+                        break;
+                }
+                return0();
             }
-            return0();
-        }
-        //class area
-        //{
-        public static void simple()
-        {
-            Console.WriteLine("Что бы узнать площадь укажите:" + "\n" + "a-сторону");
-            double a = 0;
-            usersfalses(a, out a);
-            Console.WriteLine("h-высоту");
-            double h = 0;
-            usersfalses(h, out h);
-            double S = (a * h) / 2;
-            intordouble(S);
-        }
+            
+            public static void simple()
+            {
+                Console.WriteLine("Что бы узнать площадь укажите:" + "\n" + "a-сторону");
+                double a = 0;
+                usersfalses(a, out a);
+                Console.WriteLine("h-высоту");
+                double h = 0;
+                usersfalses(h, out h);
+                double S = (a * h) / 2;
+                intordouble(S);
+            }
 
-        public static void geronesformule()
-        {
+            public static void geronesformule()
+            {
 
-            Console.WriteLine("Что бы узнать площадь треугольника укажите:" + "\n" + "a-первая сторона");
-            double a = 0;
-            usersfalses(a, out a);
-            Console.WriteLine("вторая сторона");
-            double b = 0;
-            usersfalses(b, out b);
-            Console.WriteLine("третья сторона");
-            double c = 0;
-            usersfalses(c, out c);
-            double p = (a + b + c) / 2;
-            double s = p * (p - a) * (p - b) * (p - c);
-            double S = Math.Sqrt(s);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            intordouble(S);
-        }
-        static void parallelogram()
-        {
-            Console.Write("Что бы узнать площадь параллелограмма укажите:");
-            Console.WriteLine("a-основание");
-            double a = 0;
-            usersfalses(a, out a);
-            Console.WriteLine("h-высоту");
-            double h = 0;
-            usersfalses(h, out h);
-            double S = a * h;
-            intordouble(S);
-        }
-        public static void square()
-        {
-            Console.Write("Что бы узнать площадь квадрата укажите:");
-            Console.WriteLine("d-диагональ");
-            double d = 0;
-            usersfalses(d, out d);
-            double D = Math.Pow(d, 2);
-            double S = D / 2;
-            intordouble(S);
-        }
-        public static void trapeze()
-        {
-            Console.Write("Что бы узнать площадь трапеции укажите:");
-            Console.WriteLine("a-первое основание");
-            double a = 0;
-            usersfalses(a, out a);
-            Console.WriteLine("b-второе основание");
-            double b = 0;
-            usersfalses(b, out b);
-            Console.WriteLine("h-высота");
-            double h = 0;
-            usersfalses(h, out h);
-            double S = (a + b) / 2 * h;
-            intordouble(S);
-        }
-        public static void circle()
-        {
-            Console.Write("Что бы узнать площадь круга укажите:");
-            Console.WriteLine("R-радиус");
-            double r = 0;
-            usersfalses(r, out r);
-            double R = Math.Pow(r, 2);
-            double S = 3.14 * R;
-            intordouble(S);
-        }
-        public static void rhombus()
-        {
-            Console.Write("Что бы узнать площадь ромба укажите:");
-            Console.WriteLine("d1-первая диагональ");
-            double d1 = 0;
-            usersfalses(d1, out d1);
-            Console.WriteLine("d2-вторая диагональ");
-            double d2 = 0;
-            usersfalses(d2, out d2);
-            double S = d1 * d2 / 2;
-            intordouble(S);
-        }
-        public static void notsimple()
-        {
-            Console.Write("Что бы узнать площадь треугольника укажите:");
-            Console.WriteLine("a- перва сторона");
-            double a = 0;
-            usersfalses(a, out a);
-            Console.WriteLine("b- вторая сторона");
-            double b = 0;
-            usersfalses(b, out b);
-            Console.WriteLine("c- третья сторона");
-            double c = 0;
-            usersfalses(c, out c);
-            Console.WriteLine("R-радиус описанной окружности");
-            double R = 0;
-            usersfalses(R, out R);
-            double S = (a + b + c) / 4 / R;
-            intordouble(S);
+                Console.WriteLine("Что бы узнать площадь треугольника укажите:" + "\n" + "a-первая сторона");
+                double a = 0;
+                usersfalses(a, out a);
+                Console.WriteLine("вторая сторона");
+                double b = 0;
+                usersfalses(b, out b);
+                Console.WriteLine("третья сторона");
+                double c = 0;
+                usersfalses(c, out c);
+                double p = (a + b + c) / 2;
+                double s = p * (p - a) * (p - b) * (p - c);
+                double S = Math.Sqrt(s);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                intordouble(S);
+            }
+            static void parallelogram()
+            {
+                Console.Write("Что бы узнать площадь параллелограмма укажите:");
+                Console.WriteLine("a-основание");
+                double a = 0;
+                usersfalses(a, out a);
+                Console.WriteLine("h-высоту");
+                double h = 0;
+                usersfalses(h, out h);
+                double S = a * h;
+                intordouble(S);
+            }
+            public static void square()
+            {
+                Console.Write("Что бы узнать площадь квадрата укажите:");
+                Console.WriteLine("d-диагональ");
+                double d = 0;
+                usersfalses(d, out d);
+                double D = Math.Pow(d, 2);
+                double S = D / 2;
+                intordouble(S);
+            }
+            public static void trapeze()
+            {
+                Console.Write("Что бы узнать площадь трапеции укажите:");
+                Console.WriteLine("a-первое основание");
+                double a = 0;
+                usersfalses(a, out a);
+                Console.WriteLine("b-второе основание");
+                double b = 0;
+                usersfalses(b, out b);
+                Console.WriteLine("h-высота");
+                double h = 0;
+                usersfalses(h, out h);
+                double S = (a + b) / 2 * h;
+                intordouble(S);
+            }
+            public static void circle()
+            {
+                Console.Write("Что бы узнать площадь круга укажите:");
+                Console.WriteLine("R-радиус");
+                double r = 0;
+                usersfalses(r, out r);
+                double R = Math.Pow(r, 2);
+                double S = 3.14 * R;
+                intordouble(S);
+            }
+            public static void rhombus()
+            {
+                Console.Write("Что бы узнать площадь ромба укажите:");
+                Console.WriteLine("d1-первая диагональ");
+                double d1 = 0;
+                usersfalses(d1, out d1);
+                Console.WriteLine("d2-вторая диагональ");
+                double d2 = 0;
+                usersfalses(d2, out d2);
+                double S = d1 * d2 / 2;
+                intordouble(S);
+            }
+            public static void notsimple()
+            {
+                Console.Write("Что бы узнать площадь треугольника укажите:");
+                Console.WriteLine("a- перва сторона");
+                double a = 0;
+                usersfalses(a, out a);
+                Console.WriteLine("b- вторая сторона");
+                double b = 0;
+                usersfalses(b, out b);
+                Console.WriteLine("c- третья сторона");
+                double c = 0;
+                usersfalses(c, out c);
+                Console.WriteLine("R-радиус описанной окружности");
+                double R = 0;
+                usersfalses(R, out R);
+                double S = (a + b + c) / 4 / R;
+                intordouble(S);
+            }
+            public static void sintr()
+            {
+                Console.Write("");
+                Console.WriteLine("a-");
+                double a = 0;
+                usersfalses(a, out a);
+                Console.WriteLine("b-");
+                double b = 0;
+
+                usersfalses(b,out b);
+                trigonometrya.sinus();
+                Console.WriteLine();
+                double S = a;
+            }
+            public static void whatdoyouknow()
+            {
+                Console.WriteLine("Что вы знаете ?"+"\n"+"1-Угол"+"\n"+"2-Синус");
+
+
+            }
         }
         static void f()
         {
-            Console.WriteLine("Введите число факториал котого вы хотите узнать");
+            Console.WriteLine("Введите число, факториал котого вы хотите узнать");
             int answer = Convert.ToInt32(Console.ReadLine());
             int y = Fact(answer);
             Console.WriteLine(y);
@@ -676,6 +710,87 @@ namespace ConsoleApp15
                 return 1;
             }
             return num * Fact(num - 1);
+        }
+        class trigonometrya
+        {
+            public static void trig()
+            {
+                Console.WriteLine("Что вы хотите найти?");
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Косинус-");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Синус-");
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine("Тангенс-");
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine("Котангенс(В программе БАГГ)");
+                Console.ResetColor();
+                int answer = 0;
+                usersfalsesint(answer, out answer);
+                switch (answer)
+                {
+                    case 1:
+                        cosinus();
+                        break;
+                    case 2:
+                        sinus();
+                        break;
+                    case 3:
+                        tan();
+                        break;
+                    case 4:
+                        cotan();
+                        break;
+                    default:
+                        break;
+                }
+                Console.ResetColor();
+                return0();
+
+            }
+            public static void cosinus()
+            {
+
+                double radian = 0;
+                ent(out radian);
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.Write("Косинус=");
+                Console.WriteLine(Math.Cos(radian));
+
+            }
+            public static void sinus()
+            {
+                double radian = 0;
+                ent(out radian);
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write("Синус=");
+                Console.WriteLine(Math.Sin(radian));
+            }
+            public static void tan()
+            {
+                double radian = 0;
+                ent(out radian);
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.Write("Тангенс=");
+                Console.WriteLine(Math.Tan(radian));
+            }
+            public static void cotan()
+            {
+                double radian = 0;
+                ent(out radian);
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write("Котангенс=");
+                Console.WriteLine(1/Math.Tan(radian));
+            }
+
+            public static void ent(out double radian)
+            {
+                Console.WriteLine("Введите угол ");
+                double entering = Convert.ToDouble(Console.ReadLine());
+                radian = Math.PI / (180 / entering);
+
+            }
+
         }
         static int[] varumn()
         {
@@ -943,7 +1058,8 @@ namespace ConsoleApp15
         {
             Console.WriteLine("Хочешь вернутся в главное меню (в противном случае программа завершится)?[y/n]");
             string answer = Console.ReadLine();
-            if (answer=="y")
+            string ans = answer.ToLower();
+            if (ans=="y"||ans=="н")
             {
                 string[] mass = new string[0];
                 Main(mass);

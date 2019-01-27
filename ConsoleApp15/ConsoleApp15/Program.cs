@@ -43,10 +43,13 @@ namespace ConsoleApp15
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("8-Нахождение синуса ,косинуса,тангенса,котангенса. ");
             Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("9-Bruteforse в мирных целях");
+            Console.ResetColor();
             Console.WriteLine("*УКАЖИТЕ НОМЕР ОПЕРАЦИИ*");
             int thebeggining = 0;
             start:
-            usersfalsesint(thebeggining,out thebeggining);
+            Entering_or_Convertation.usersfalsesint(thebeggining,out thebeggining);
             switch (thebeggining)
             {
                 case 1:
@@ -73,9 +76,14 @@ namespace ConsoleApp15
                 case 8:
                     trigonometrya.trig();
                     break;
-                default:
-
+                case 9:
+                    Bruteforce bruteforce = new Bruteforce();
                     default_for_switchcase();
+                    break;
+                case 0:
+                    Experiments experiments = new Experiments();
+                    break;
+                default:
                     goto start;
                     break;
             }
@@ -85,10 +93,10 @@ namespace ConsoleApp15
         {
             Console.WriteLine("1-операция нахождения гипотенузы " + "\n" + "2-операция нахождение катета ");
             int a = 0;
-            usersfalsesint(a, out a);
+            Entering_or_Convertation.usersfalsesint(a, out a);
             Console.WriteLine("уточните количество знаков после запятой ,если число окажется дробным вплоть до 14-ти" + "\n" + "1-хочу увидеть все вплоть до 14" + "\n" + "2-я задам количество знаков сам");
             int r = 0;
-            usersfalsesint(r, out r);
+            Entering_or_Convertation.usersfalsesint(r, out r);
             int m = 0;
             if (r == 1)
             {
@@ -113,11 +121,11 @@ namespace ConsoleApp15
                         start:
                         Console.WriteLine("введите длину первого катета ");
                         double b = 0;
-                        usersfalses(b, out b);
+                        Entering_or_Convertation.usersfalses(b, out b);
                         controld(b);
                         Console.WriteLine("введите длину второго катета");
                         double c = 0;
-                        usersfalses(c, out c);
+                        Entering_or_Convertation.usersfalses(c, out c);
                         controld(c);
                         double s = Math.Pow(b, 2);
                         double v = Math.Pow(c, 2);
@@ -137,11 +145,11 @@ namespace ConsoleApp15
                         start:
                         Console.WriteLine("введите длину гипотенузы");
                         double b = 0;
-                        usersfalses(b, out b);
+                        Entering_or_Convertation.usersfalses(b, out b);
                         controld(b);
                         Console.WriteLine("введите длину одного из катетов");
                         double c = 0;
-                        usersfalses(c, out c);
+                        Entering_or_Convertation.usersfalses(c, out c);
                         controld(c);
                         double s = Math.Pow(b, 2);
                         double v = Math.Pow(c, 2);
@@ -158,7 +166,7 @@ namespace ConsoleApp15
                     }
                     break;
                 default:
-
+                    default_for_switchcase();
                     break;
 
             }
@@ -170,7 +178,7 @@ namespace ConsoleApp15
             start:
             Console.WriteLine("ДОБРО ПОЖАЛОВАТЬ В МОЮ ПРОГРАММУ." + "\n" + "ВЫБЕРИТЕ ЖЕЛАЕМУЮ ПРОГРАММУ" + "\n" + "1-Вам дадут тест ,количество вопросов вы фиксируете сами " + "\n" + "2-Вам дадут тест и он будет длится до тех пор ,пока вы не ошибётесь или пока не выйдете");
             int answer = 0;
-            usersfalsesint(answer, out answer);
+            Entering_or_Convertation.usersfalsesint(answer, out answer);
             switch (answer)
             {
                 case 1:
@@ -192,7 +200,7 @@ namespace ConsoleApp15
             Random random = new Random();
             Console.WriteLine("Введите количестов вопросов в тесте");
             int answ = 0;
-            usersfalsesint(answ, out answ);
+            Entering_or_Convertation.usersfalsesint(answ, out answ);
             float i = 0;
             int[] result = varumn();
             int s = result[0];
@@ -259,7 +267,7 @@ namespace ConsoleApp15
                 randomNumber2 = random.Next(s, c);
 
                 Console.WriteLine(randomNumber1 + "*" + randomNumber2 + "-ваш ответ");
-                usersfalsesint(sd, out sd);
+                Entering_or_Convertation.usersfalsesint(sd, out sd);
 
             } while (randomNumber2 * randomNumber1 == sd);
             
@@ -269,7 +277,7 @@ namespace ConsoleApp15
         {
             Console.WriteLine("выберите желаемую операцию" + "\n" + "1- Заранее заданные ключевые значения и количество букв " + "\n" + "2- Ключевые значения вы задаёте сами");
             int x = 0;
-            usersfalsesint(x, out x);
+            Entering_or_Convertation.usersfalsesint(x, out x);
             switch (x)
             {
                 case 1:
@@ -314,11 +322,11 @@ namespace ConsoleApp15
             Console.WriteLine("Это массив в который я буду записывать все слова записанные тобой,которые содержат  заданные тобой ключевые значения или состоит из заданного тобой числа букв" + "\n" + "для выхода и просмотра содержимого массива напишите - stop");
             string yxrnumber = "";
             Console.WriteLine("Введите ключевое значение");
-            string key = Console.ReadLine();
-            Logs log = new Logs(key);
+            string key = "";
+            Entering_or_Convertation.usersneverfalses_at_str(key,out key);
             Console.WriteLine("Введите количество букв для ключевого слова");
             int x = 0;
-            usersfalsesint(x, out x);
+            Entering_or_Convertation.usersfalsesint(x, out x);
             string g = "";
             int i = 0;
             while (yxrnumber != "stop")
@@ -326,8 +334,8 @@ namespace ConsoleApp15
 
 
                 Console.WriteLine("введите слово");
-                yxrnumber = Console.ReadLine();
-                Logs log1 = new Logs(yxrnumber);
+                yxrnumber = "";
+                Entering_or_Convertation.usersneverfalses_at_str(yxrnumber, out yxrnumber);
                 if (yxrnumber.Length == x || yxrnumber.Contains(key) == true)
                 {
                     i++;
@@ -343,7 +351,7 @@ namespace ConsoleApp15
         {
             Console.WriteLine("введите желаемую операцию" + "\n" + "1-отгадай число,заданное компьютером" + "\n" + "2-за сколько попыток  компьютер отгадает ,заданное тобой число");
             int x = 0;
-            usersfalsesint(x, out x);
+            Entering_or_Convertation.usersfalsesint(x, out x);
             switch (x)
             {
                 case 1:
@@ -371,7 +379,7 @@ namespace ConsoleApp15
             {
                 v++;
                 Console.WriteLine("Попытка " + v);
-                usersfalsesint(z, out z);
+                Entering_or_Convertation.usersfalsesint(z, out z);
 
             } while (i != z);
             Console.ForegroundColor = ConsoleColor.Red;
@@ -390,10 +398,10 @@ namespace ConsoleApp15
             int z = 0;
             Console.WriteLine("введите ваше число");
             int i = 0;
-            usersfalsesint(i, out i);
+            Entering_or_Convertation.usersfalsesint(i, out i);
             Console.WriteLine("Оставить логи открытыми(видеть какие числа перебирал компьютер )[y/n]");
-            string r = Console.ReadLine();
-            Logs log = new Logs(r);
+            string r = "";
+            Entering_or_Convertation.usersneverfalses_at_str(r,out r);
             if (r == "y")
             {
                 Console.WriteLine("хотите чтобы они были раскрашенны[y/n]");
@@ -437,7 +445,7 @@ namespace ConsoleApp15
             start:
             Console.WriteLine("выберите версию программы" + "\n" + "1-первая версия (красим буквы)" + "\n" + "2-вторая версия(задний фон)" + "\n" + "3-третья версия");
             int i = 0;
-            usersfalsesint(i, out i);
+            Entering_or_Convertation.usersfalsesint(i, out i);
             switch (i)
             {
                 case 1:
@@ -462,8 +470,8 @@ namespace ConsoleApp15
            
                 Console.WriteLine("Ваш вердикт");
                 start:
-                h = Console.ReadLine();
-                Logs log = new Logs(h);
+                h = "";
+                Entering_or_Convertation.usersneverfalses_at_str(h,out h);
                 if (h == "y")
                 {
                     
@@ -540,7 +548,7 @@ namespace ConsoleApp15
                 Console.WriteLine("П-число Пи(округлённое до 3,14)");
                 Console.ResetColor();
                 int g = 0;
-                usersfalsesint(g, out g);
+                Entering_or_Convertation.usersfalsesint(g, out g);
                 switch (g)
                 {
                     case 1:
@@ -574,12 +582,12 @@ namespace ConsoleApp15
             {
                 Console.WriteLine("Что бы узнать площадь укажите:" + "\n" + "a-сторону");
                 double a = 0;
-                usersfalses(a, out a);
+                Entering_or_Convertation.usersfalses(a, out a);
                 Console.WriteLine("h-высоту");
                 double h = 0;
-                usersfalses(h, out h);
+                Entering_or_Convertation.usersfalses(h, out h);
                 double S = (a * h) / 2;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
             }
 
             public static void geronesformule()
@@ -587,137 +595,137 @@ namespace ConsoleApp15
 
                 Console.WriteLine("Что бы узнать площадь треугольника укажите:" + "\n" + "a-первая сторона");
                 double a = 0;
-                usersfalses(a, out a);
+                Entering_or_Convertation.usersfalses(a, out a);
                 Console.WriteLine("вторая сторона");
                 double b = 0;
-                usersfalses(b, out b);
+                Entering_or_Convertation.usersfalses(b, out b);
                 Console.WriteLine("третья сторона");
                 double c = 0;
-                usersfalses(c, out c);
+                Entering_or_Convertation.usersfalses(c, out c);
                 double p = (a + b + c) / 2;
                 double s = p * (p - a) * (p - b) * (p - c);
                 double S = Math.Sqrt(s);
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
             }
             static void parallelogram()
             {
                 Console.Write("Что бы узнать площадь параллелограмма укажите:");
                 Console.WriteLine("a-основание");
                 double a = 0;
-                usersfalses(a, out a);
+                Entering_or_Convertation.usersfalses(a, out a);
                 Console.WriteLine("h-высоту");
                 double h = 0;
-                usersfalses(h, out h);
+                Entering_or_Convertation.usersfalses(h, out h);
                 double S = a * h;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
             }
             public static void square()
             {
                 Console.Write("Что бы узнать площадь квадрата укажите:");
                 Console.WriteLine("d-диагональ");
                 double d = 0;
-                usersfalses(d, out d);
+                Entering_or_Convertation.usersfalses(d, out d);
                 double D = Math.Pow(d, 2);
                 double S = D / 2;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
             }
             public static void trapeze()
             {
                 Console.Write("Что бы узнать площадь трапеции укажите:");
                 Console.WriteLine("a-первое основание");
                 double a = 0;
-                usersfalses(a, out a);
+                Entering_or_Convertation.usersfalses(a, out a);
                 Console.WriteLine("b-второе основание");
                 double b = 0;
-                usersfalses(b, out b);
+                Entering_or_Convertation.usersfalses(b, out b);
                 Console.WriteLine("h-высота");
                 double h = 0;
-                usersfalses(h, out h);
+                Entering_or_Convertation.usersfalses(h, out h);
                 double S = (a + b) / 2 * h;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
             }
             public static void circle()
             {
                 Console.Write("Что бы узнать площадь круга укажите:");
                 Console.WriteLine("R-радиус");
                 double r = 0;
-                usersfalses(r, out r);
+                Entering_or_Convertation.usersfalses(r, out r);
                 double R = Math.Pow(r, 2);
                 double S = 3.14 * R;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
             }
             public static void rhombus()
             {
                 Console.Write("Что бы узнать площадь ромба укажите:");
                 Console.WriteLine("d1-первая диагональ");
                 double d1 = 0;
-                usersfalses(d1, out d1);
+                Entering_or_Convertation.usersfalses(d1, out d1);
                 Console.WriteLine("d2-вторая диагональ");
                 double d2 = 0;
-                usersfalses(d2, out d2);
+                Entering_or_Convertation.usersfalses(d2, out d2);
                 double S = d1 * d2 / 2;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
             }
             public static void notsimple()
             {
                 Console.Write("Что бы узнать площадь треугольника укажите:");
                 Console.WriteLine("a- перва сторона");
                 double a = 0;
-                usersfalses(a, out a);
+                Entering_or_Convertation.usersfalses(a, out a);
                 Console.WriteLine("b- вторая сторона");
                 double b = 0;
-                usersfalses(b, out b);
+                Entering_or_Convertation.usersfalses(b, out b);
                 Console.WriteLine("c- третья сторона");
                 double c = 0;
-                usersfalses(c, out c);
+                Entering_or_Convertation.usersfalses(c, out c);
                 Console.WriteLine("R-радиус описанной окружности");
                 double R = 0;
-                usersfalses(R, out R);
+                Entering_or_Convertation.usersfalses(R, out R);
                 double S = (a + b + c) / 4 / R;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
             }
             public static void sintr()
             {
                 Console.WriteLine("Чтобы узнать площадь укажите:");
                 Console.Write("a-");
                 double a = 0;
-                usersfalses(a, out a);
+                Entering_or_Convertation.usersfalses(a, out a);
                 Console.Write("b-");
                 double b = 0;
-                usersfalses(b,out b);                
+                Entering_or_Convertation.usersfalses(b,out b);                
                 Console.Write("sin-");
                 double sin = 0;
                 whatdoyouknow(out sin);
                 double S = a*b*sin/2;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
             }
             public static void sinpar()
             {
                 Console.WriteLine("Чтобы узнать площадь укажите:");
                 Console.Write("a-");
                 double a = 0;
-                usersfalses(a, out a);
+                Entering_or_Convertation.usersfalses(a, out a);
                 Console.Write("b-");
                 double b = 0;
-                usersfalses(b, out b);
+                Entering_or_Convertation.usersfalses(b, out b);
                 Console.Write("sin-");
                 double sin = 0;
                 whatdoyouknow(out sin);
                 double S = a * b * sin ;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
             }
             public static void sinrombus()
             {
                 Console.WriteLine("Чтобы узнать площадь укажите:");
                 Console.Write("a-");
                 double a = 0;
-                usersfalses(a, out a);
+                Entering_or_Convertation.usersfalses(a, out a);
                 Console.Write("sin-");
                 double sin = 0;
                 whatdoyouknow(out sin);
                 double S = a *a * sin;
-                intordouble(S);
+                Entering_or_Convertation.intordouble(S);
 
             }
             public static void whatdoyouknow(out double fact)
@@ -726,19 +734,19 @@ namespace ConsoleApp15
                 start:
                 Console.WriteLine("Что вы знаете ?"+"\n"+"1-Угол"+"\n"+"2-Синус");
                 int i = 0;
-                usersfalsesint(i,out i);
+               Entering_or_Convertation.usersfalsesint(i,out i);
                 switch(i)
                 {
                     case 1:
                         Console.WriteLine("Введите значение угла");
                         int entering = 0;
-                        usersfalsesint(entering,out entering);
+                        Entering_or_Convertation.usersfalsesint(entering,out entering);
                         fact = Math.Sin(Math.PI/(180/entering));
                         break;
                     case 2:
                         Console.WriteLine("Введите значение синуса");
                         fact = 0;
-                        usersfalses(fact,out fact);
+                       Entering_or_Convertation.usersfalses(fact,out fact);
                         break;
                     default:
                         default_for_switchcase();
@@ -752,7 +760,7 @@ namespace ConsoleApp15
         {
             Console.WriteLine("Введите число, факториал котого вы хотите узнать");
             int answer = 0;
-            usersfalsesint(answer,out answer);
+            Entering_or_Convertation.usersfalsesint(answer,out answer);
             int y = Fact(answer);
             Console.WriteLine(y);
             Console.ReadKey();
@@ -782,7 +790,7 @@ namespace ConsoleApp15
                 Console.WriteLine("Котангенс(В программе БАГГ)");
                 Console.ResetColor();
                 int answer = 0;
-                usersfalsesint(answer, out answer);
+                Entering_or_Convertation.usersfalsesint(answer, out answer);
                 switch (answer)
                 {
                     case 1:
@@ -845,9 +853,161 @@ namespace ConsoleApp15
             {
                 Console.WriteLine("Введите угол ");
                 double entering = 0;
-                usersfalses(entering, out entering);
+               Entering_or_Convertation.usersfalses(entering, out entering);
                 radian = Math.PI / (180 / entering);
 
+            }
+
+        }
+        class Bruteforce
+        {
+            public Bruteforce()
+            {
+                start:
+                Console.WriteLine("Введите номер операции \n 1-Составные и простые числа \n 2-Проверка чисел на кратность");
+                int choose = 0;
+                Entering_or_Convertation.usersfalsesint(choose,out choose);
+                switch(choose)
+                {
+                    case 1:
+                        SimpleOrComposite();
+                        break;
+                    case 2:
+                        AllMultiples();
+                        break;
+                    case 3:
+                        ExampleOfBruteForce0();
+                        break;
+                    case 4:
+                        ExampleOfBruteForce1();
+                        break;
+                    case 5:
+                        ExampleOfBruteforce2();
+                        break;
+                    default:
+                        default_for_switchcase();
+                        goto start;                        
+                }
+
+            }
+            private void SimpleOrComposite()
+            {
+                Console.WriteLine("Зелёным цветом помечены составные числа, красным простые,цикл бесконечен,чтобы закончить выйдете из программы,введите любую кнопку ,чтобы начать");
+                Console.ReadLine();
+                double hash = 0;
+                int g = 0;
+                bool check =false;
+                while (true)
+                {
+                    g++;
+                    for (int i=2;i<g;i++)
+                    {
+                        //Алгоритм0 g/i<hash || g/i
+                        //Алгоритм1 проблема алгоритма находится в том,что при единственном получении дроби числу присваивается значение составное , а так будет постоянно начиная с трёх 
+                        hash = ((double)g) / ((double)i);
+                        if (hash==g/i)
+                        {
+                            check = true;                           
+                        }                                              
+                    }
+                    if (check)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;                       
+                    }
+                    else 
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;                                              
+                    }
+                    Console.WriteLine(g);
+                    check = false;
+                }
+            }
+            private void AllMultiples()
+            {
+                
+                int i = 0;
+                Console.WriteLine("Введите число,кратность к которому будем проверять.Зелёный кратно,красный нет.");
+                double multiple =0;
+                Entering_or_Convertation.usersfalses(multiple,out multiple);
+                while(true)
+                {
+                    
+                    i++;
+                    if ( i / multiple == (int) (i/multiple) )
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                    }
+                    
+                    Console.WriteLine(i);
+                   
+                }
+            }
+            private void ExampleOfBruteForce0()
+            {
+                Console.WriteLine("Здесь приведён пример простого переборщика паролей(только цифры).Введите предполагаемый пароль.");
+                int password = 0;
+                Entering_or_Convertation.usersfalsesint(password,out password);
+                string password0=password.ToString();
+                string enumeration="";
+                int i = 0;
+                string summer = "";
+                do
+                {
+                    for (int g = 0; ; g++ )
+                    {
+                        for (; i < 10; i++)
+                        {
+                            enumeration = summer + i;
+                            if (enumeration ==password0) break;
+                        }
+                        //enu
+                    }                   
+                }
+                while (enumeration!=password0);
+
+            }
+            private void ExampleOfBruteForce1()
+            {
+                Console.WriteLine("Введите ваш пароль");
+                int password = 0;
+                Entering_or_Convertation.usersfalsesint(password, out password);
+                int key = 0;
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                while (key != password) key++; Console.WriteLine(key);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Ваш пароль "+key);
+            }
+            private void ExampleOfBruteforce2()
+            {
+                
+            }
+        }
+        class Experiments
+        {
+            public Experiments()
+            {
+                Console.WriteLine("Эксперименты для лучшего понимания языка \n 1-Приведение типов выражения");
+                int choose = 0;
+                Entering_or_Convertation.usersfalsesint(choose,out choose);
+                switch (choose)
+                {
+                    case 1:
+                        Convertation();
+                        break;
+                    case 2:
+                        break;
+                }
+            }
+            private void Convertation()
+            {
+                int v = 9;
+                double t = 82;
+                Console.WriteLine(t+" "+v+" t/v "+t/v);
+                Console.ReadLine();
             }
 
         }
@@ -856,11 +1016,11 @@ namespace ConsoleApp15
             int[] numbers = new int[2];
             Console.WriteLine("Введите наименьшее число ,которое будет в примере");
             int s = 0;
-            usersfalsesint(s,out s);
+            Entering_or_Convertation.usersfalsesint(s,out s);
             numbers[0] = s;
             Console.WriteLine("Введите наибольшее число,которое будет в примере");
             int c = 0;
-            usersfalsesint(c,out c);
+            Entering_or_Convertation.usersfalsesint(c,out c);
             numbers[numbers.Length - 1] = c;
             return numbers;
 
@@ -899,7 +1059,7 @@ namespace ConsoleApp15
             Console.WriteLine("вы ввели недопустимое значение.TRY AGAIN!!!");
             return0();
         }      
-        public static void randomcolorsf()
+        public static string randomcolorsf()
         {
                     
                 Random random = new Random();
@@ -962,9 +1122,10 @@ namespace ConsoleApp15
                             Console.ForegroundColor = ConsoleColor.Red;
                         }
                         break;
-
+                    
                 
             }
+            return "";
         }
         public void randomcolorsback()
         {
@@ -1039,113 +1200,158 @@ namespace ConsoleApp15
 
             }
         }
-        public static void intordouble(double S)
+        public static string ResetColor()
         {
-            if (S % 1 != 0)
+            Console.ResetColor();
+            return "";
+        }
+        class Entering_or_Convertation
+        {
+            public static void intordouble(double S)
             {
-                Console.WriteLine("Вывести в целочисленном виде?[y/n]");
-                string answer = Console.ReadLine();
-                Logs log = new Logs(answer);
-                if (answer == "y")
+                if (S % 1 != 0)
                 {
-                    int sc = Convert.ToInt32(S);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("S=" + sc);
+                    Console.WriteLine("Вывести в целочисленном виде?[y/n]");
+                    string answer = "";
+                    Entering_or_Convertation.usersneverfalses_at_str(answer,out answer);
+                    if (answer == "y")
+                    {
+                        int sc = Convert.ToInt32(S);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("S=" + sc);
 
+                    }
+                    else
+                    {
+
+                        double sc = S;
+                        tellmeRound(sc, out sc);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("S=" + sc);
+
+                    }
                 }
                 else
                 {
-                  
-                    double sc = S;
-                    tellmeRound(sc, out sc);
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("S=" + sc);
+                    Console.WriteLine("S=" + S);
+                }
+                Console.ReadLine();
+            }
+
+
+            public static void usersfalses(double x, out double z)
+            {
+
+                start:
+                string y = "";
+                Entering_or_Convertation.usersneverfalses_at_str(y,out y);
+              //  Logs logs = new Logs(y);
+                
+                try
+                {
+
+                    x = Convert.ToInt32(y);
+
+                }
+                catch (Exception)
+                {
+
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Неверное значение.Введите заново.");
+                    Console.ResetColor();
+                    goto start;
+                }
+
+                z = x;
+            }
+            public static void usersfalsesint(int x, out int z)
+            {
+
+                start:
+                string y = "";
+                Entering_or_Convertation.usersneverfalses_at_str(y,out y);
+               // Logs logs = new Logs(y);               
+               
+                try
+                {
+
+
+                    x = Convert.ToInt32(y);
+
+                }
+                catch (Exception)
+                {
+
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Неверное значение.Введите заново.");
+                    Console.ResetColor();
+                    goto start;
+                }
+                z = x;
+
+            }
+            public static void usersneverfalses_at_str(string x, out string z)
+            {
+                x =Console.ReadLine();
+                Logs logs =new Logs(x);
+                string manual = x.ToLower();
+                checksu(manual);
+                z = x;
+            }
+            public static void checksu(string manual)
+            {
+                if (manual == "man" || manual == "manual" || manual == "ман" || manual == "мануал")
+                {
+                    man();
+                }
+                else if (manual == "q" || manual == "quit" || manual == "exit" || manual == "ex" || manual == "выход")
+                {
+                    return0();
+                }
+                else if (manual == "toor")
+                {
+                    Console.WriteLine("All logs here" + Logs.Log);
+                    
+                }
+            }
+            public static void man()
+            {
+                start:
+                Console.WriteLine("мануал не готов/тестовая версия" +
+                    "\n" + "хотите продолжить[1] или вернуться в меню[2]");
+                int answer = 0;
+                usersfalsesint(answer, out answer);
+                switch (answer)
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        return0();
+                        break;
+                    default:
+                        default_for_switchcase();
+                        goto start;
+
 
                 }
             }
-            else
+            public static void tellmeRound(double entering, out double output)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("S=" + S);
+                Console.WriteLine("Сколько знаков хотите видеть после запятой ?");
+                int round = 0;
+                usersfalsesint(round, out round);
+                output = Math.Round(entering, round);
             }
-            Console.ReadLine();
-        }
-        
-
-        public static void usersfalses(double x, out double z)
-        {
-            
-            start:
-            string y = Console.ReadLine();
-            Logs logs = new Logs(y);
-
-            string manual = Convert.ToString(y);
-            if (manual == "man" || manual == "manual" || manual == "ман" || manual == "мануал")
+            class Logs
             {
-                man();
-            }
-            else if (manual == "q" || manual == "quit" || manual == "exit" || manual == "ex" || manual == "выход")
-            {
-                return0();
-            }
-            else if (manual == "toor")
-            {
-                Console.WriteLine("All logs here" + Logs.Log);
-            }
-            try
-            {
-
-                x = Convert.ToInt32(y);
-
-            }
-            catch (Exception)
-            {
-               
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Неверное значение.Введите заново.");
-                Console.ResetColor();
-                goto start;
-            }
-            
-            z = x;
-        }
-        public static void usersfalsesint(int x, out int z)
-        {
-
-            start:
-
-            string y = Console.ReadLine();
-            Logs logs = new Logs(y);
-
-                string manual = Convert.ToString(y);
-                if (manual == "man" || manual == "manual" || manual == "ман" || manual == "мануал")
+                public static string Log;
+                public Logs(string entering)
                 {
-                 man();
-                 }
-                else if (manual == "q" || manual == "quit" || manual == "exit" || manual == "ex" || manual == "выход")
-                 {
-                  return0();
-                 }
-                else if (manual=="toor")
-                 {
-                Console.WriteLine("All logs here"+Logs.Log);
-                 }
-            try { 
-
-                
-             x = Convert.ToInt32(y);
-
-               }
-           catch (Exception)
-              {
-
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Неверное значение.Введите заново.");
-                Console.ResetColor();
-                goto start;
-              }
-              z = x;
-            
+                    Log = Log + " " +entering ;
+                   
+                }
+            }
         }
         public static void doyouwantmore(out string y )
         {
@@ -1156,56 +1362,35 @@ namespace ConsoleApp15
         }   
         public static void return0()
         {
+            start:
             Console.WriteLine("Хочешь вернутся в главное меню (в противном случае программа завершится)?[y/n]");
-            string answer = Console.ReadLine();        
-            Logs logs = new Logs(answer);          
+            string answer = "";
+            Entering_or_Convertation.usersneverfalses_at_str(answer,out answer);          
             string ans = answer.ToLower();
+            
             if (ans=="y"||ans=="н")
             {
                 string[] mass = new string[0];
                 Main(mass);
             }
-            else if(ans=="toor")
-            {
-
-            }
+           
             else if (ans=="n"||ans=="т")
             {
                 Environment.Exit(0);
             }            
-        }
-        public static void man()
-        {
-            start:
-            Console.WriteLine("мануал не готов/тестовая версия" +
-                "\n"+"хотите продолжить[1] или вернуться в меню[2]");
-            int answer = 0;
-            usersfalsesint(answer,out answer);
-            switch(answer)
-            {
-                case 1:
-                    break;
-                case 2:
-                    return0();
-                    break;
-                default :
-                    default_for_switchcase();
-                    goto start;
-                    
-
+            else
+           {
+                controlstr0();
+                goto start;
             }
         }
-        public static void tellmeRound(double entering, out double output)
-        {
-            Console.WriteLine("Сколько знаков хотите видеть после запятой ?");
-            int round = 0;
-            usersfalsesint(round,out round);
-            output = Math.Round(entering,round);
-        }
+       
+        
         public static void default_for_switchcase()
         {
             Console.WriteLine("ВВЕДЁН НЕВЕРНЫЙ ВАРИАНТ.Попробовать снова[y] или вернуться в меню[n]");
-            string answer = Console.ReadLine();
+            string answer = "";
+            Entering_or_Convertation.usersneverfalses_at_str(answer, out answer);
             switch (answer)
             {
                 case "y":
@@ -1218,14 +1403,13 @@ namespace ConsoleApp15
                     break;
             }
         }
-        class Logs
+        class SuperSu
         {
-            public static string Log;
-            public Logs(string entering)
-            {
-                Log = Log + " " + entering;
-            }
+
         }
+
+            
+        
 
     }
 }

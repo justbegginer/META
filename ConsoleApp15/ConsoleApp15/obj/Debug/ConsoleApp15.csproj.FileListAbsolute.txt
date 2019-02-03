@@ -12,3 +12,10 @@ C:\Users\user.v2.0\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\obj\Debug\Con
 C:\Users\user.v2.0\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\bin\Debug\ConsoleApp15.exe.config
 C:\Users\user.v2.0\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\bin\Debug\ConsoleApp15.exe
 C:\Users\user.v2.0\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\bin\Debug\ConsoleApp15.pdb
+C:\Users\unium\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\bin\Debug\ConsoleApp15.exe.config
+C:\Users\unium\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\bin\Debug\ConsoleApp15.exe
+C:\Users\unium\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\bin\Debug\ConsoleApp15.pdb
+C:\Users\unium\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\obj\Debug\ConsoleApp15.csprojAssemblyReference.cache
+C:\Users\unium\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\obj\Debug\ConsoleApp15.csproj.CoreCompileInputs.cache
+C:\Users\unium\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\obj\Debug\ConsoleApp15.exe
+C:\Users\unium\Documents\GitHub\META\ConsoleApp15\ConsoleApp15\obj\Debug\ConsoleApp15.pdb

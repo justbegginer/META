@@ -57,10 +57,10 @@ namespace ConsoleApp15
                     
                     break;
                 case 3:
-                    key();
+                    Key.KeyUni();
                     break;
                 case 4:
-                    guess();
+                    GuessTheNumber.guess();
                     break;
                 case 5:
                     
@@ -69,7 +69,7 @@ namespace ConsoleApp15
                     rainbowchoice();
                     break;
                 case 7:
-                    f();
+                   
                     break;
                 case 8:
                     
@@ -682,174 +682,180 @@ namespace ConsoleApp15
                     return num * Fact(num - 1);
                 }
             }
-        }  
-        public static void keyuni()
-        {
-            Console.WriteLine("выберите желаемую операцию" + "\n" + "1- Заранее заданные ключевые значения и количество букв " + "\n" + "2- Ключевые значения вы задаёте сами");
-            int x = 0;
-            Entering_or_Convertation.UsersFalsesIntenger (ref x);
-            switch (x)
-            {
-                case 1:
-                    key();                    
-                    break;
-                case 2:
-                    keyyou();                  
-                    break;
-                default:
-                    FalseCondition();                   
-                    break;
-            }
-            return0();
         }
-        public static void key()
+        class Key
         {
-            List<string> mas = new List<string>();
-            Console.WriteLine("Это список в который я буду записывать все слова записанные тобой,которые содержат буквы а или состоит из 4 букв " + "\n" + "Для выхода и просмотра содержимого массива напишите - stop");
-            string Yornumber = "";
-            string key = "а";
-            string result = "";
-            int i = 0;
-            while (Yornumber != "stop")
+            public static void KeyUni()
             {
-
-
-                Console.WriteLine("введите слово");
-                Yornumber = Console.ReadLine();
-                if (Yornumber.Length == 4 || Yornumber.Contains(key) == true)
+                Console.WriteLine("выберите желаемую операцию" + "\n" + "1- Заранее заданные ключевые значения и количество букв " + "\n" + "2- Ключевые значения вы задаёте сами");
+                int x = 0;
+                Entering_or_Convertation.UsersFalsesIntenger(ref x);
+                switch (x)
                 {
-                    i++;
-                    mas.Add(Yornumber);
-                    result = result + " " + mas[i - 1];
+                    case 1:
+                        key();
+                        break;
+                    case 2:
+                        keyyou();
+                        break;
+                    default:
+                        FalseCondition();
+                        break;
                 }
+                return0();
             }
-            Console.WriteLine(result);
-         
-        }
-        public static void keyyou()
-        {
-            List<string> mas = new List<string>();
-            Console.WriteLine("Это массив в который я буду записывать все слова записанные тобой,которые содержат  заданные тобой ключевые значения или состоит из заданного тобой числа букв" + "\n" + "для выхода и просмотра содержимого массива напишите - stop");
-            string Yournumber = "";
-            Console.WriteLine("Введите ключевое значение");
-            string key = "";
-            Entering_or_Convertation.UsersNeverFalsesAtStr (ref key);
-            Console.WriteLine("Введите количество букв для ключевого слова");
-            int x = 0;
-            Entering_or_Convertation.UsersFalsesIntenger (ref  x);
-            string result = "";
-            int i = 0;
-            while (Yournumber != "stop")
+            static void key()
             {
-
-
-                Console.WriteLine("введите слово");
-                Yournumber = "";
-                Entering_or_Convertation.UsersNeverFalsesAtStr (ref Yournumber);
-                if (Yournumber.Length == x || Yournumber.Contains(key) == true)
+                List<string> mas = new List<string>();
+                Console.WriteLine("Это список в который я буду записывать все слова записанные тобой,которые содержат буквы а или состоит из 4 букв " + "\n" + "Для выхода и просмотра содержимого массива напишите - stop");
+                string Yornumber = "";
+                string key = "а";
+                string result = "";
+                int i = 0;
+                while (Yornumber != "stop")
                 {
-                    i++;
-                    mas.Add(Yournumber);
-                    result = result + " " + mas[i - 1];
+
+
+                    Console.WriteLine("введите слово");
+                    Yornumber = Console.ReadLine();
+                    if (Yornumber.Length == 4 || Yornumber.Contains(key) == true)
+                    {
+                        i++;
+                        mas.Add(Yornumber);
+                        result = result + " " + mas[i - 1];
+                    }
                 }
+                Console.WriteLine(result);
+
             }
-            Console.WriteLine(result);
-            
-        }
-
-        public static void guess()
-        {
-            Console.WriteLine("введите желаемую операцию" + "\n" + "1-отгадай число,заданное компьютером" + "\n" + "2-за сколько попыток  компьютер отгадает ,заданное тобой число");
-            int x = 0;
-            Entering_or_Convertation.UsersFalsesIntenger (ref x);
-            switch (x)
+            static void keyyou()
             {
-                case 1:
-                    guessI();                   
-                    break;
-                case 2:
-                    guessyou();                   
-                    break;
-                default:
-                    FalseCondition();
-                    break;
+                List<string> mas = new List<string>();
+                Console.WriteLine("Это массив в который я буду записывать все слова записанные тобой,которые содержат  заданные тобой ключевые значения или состоит из заданного тобой числа букв" + "\n" + "для выхода и просмотра содержимого массива напишите - stop");
+                string Yournumber = "";
+                Console.WriteLine("Введите ключевое значение");
+                string key = "";
+                Entering_or_Convertation.UsersNeverFalsesAtStr(ref key);
+                Console.WriteLine("Введите количество букв для ключевого слова");
+                int x = 0;
+                Entering_or_Convertation.UsersFalsesIntenger(ref x);
+                string result = "";
+                int i = 0;
+                while (Yournumber != "stop")
+                {
+
+
+                    Console.WriteLine("введите слово");
+                    Yournumber = "";
+                    Entering_or_Convertation.UsersNeverFalsesAtStr(ref Yournumber);
+                    if (Yournumber.Length == x || Yournumber.Contains(key) == true)
+                    {
+                        i++;
+                        mas.Add(Yournumber);
+                        result = result + " " + mas[i - 1];
+                    }
+                }
+                Console.WriteLine(result);
+
             }
-            return0();
         }
-        public static void guessI()
-        {
-            Random random = new Random();
-            int s = 0;
-            int v = 0;
-            int[] result = Tools.Varumn();
-            int z = result[0];
-            int c = result[1];
-            int i = random.Next(s, c);
-            do
-            {
-                v++;
-                Console.WriteLine("Попытка " + v);
-                Entering_or_Convertation.UsersFalsesIntenger (ref z);
 
-            } while (i != z);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Вами было отгадано число " + i);
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Вы отгадали с " + v + " попытки");         
-        }
-        public static void guessyou()
+        class GuessTheNumber
         {
-            string t = "";
-            Random random = new Random();
-            int v = 0;
-            int[] result = Tools.Varumn();
-            int s = result[0];
-            int c = result[1];
-            int z = 0;
-            Console.WriteLine("введите ваше число");
-            int i = 0;
-            Entering_or_Convertation.UsersFalsesIntenger (ref i);
-            Console.WriteLine("Оставить логи открытыми(видеть какие числа перебирал компьютер )[y/n]");
-            string r = "";
-            Entering_or_Convertation.UsersNeverFalsesAtStr(ref r);
-            if (r == "y")
+            public static void guess()
             {
-                Console.WriteLine("хотите чтобы они были раскрашенны[y/n]");
-                t = Console.ReadLine();
-                Tools.ControlString(t);
+                Console.WriteLine("введите желаемую операцию" + "\n" + "1-отгадай число,заданное компьютером" + "\n" + "2-за сколько попыток  компьютер отгадает ,заданное тобой число");
+                int x = 0;
+                Entering_or_Convertation.UsersFalsesIntenger(ref x);
+                switch (x)
+                {
+                    case 1:
+                        guessI();
+                        break;
+                    case 2:
+                        guessyou();
+                        break;
+                    default:
+                        FalseCondition();
+                        break;
+                }
+                return0();
+            }
+            static void guessI()
+            {
+                Random random = new Random();
+                int s = 0;
+                int v = 0;
+                int[] result = Tools.Varumn();
+                int z = result[0];
+                int c = result[1];
+                int i = random.Next(s, c);
+                do
+                {
+                    v++;
+                    Console.WriteLine("Попытка " + v);
+                    Entering_or_Convertation.UsersFalsesIntenger(ref z);
 
-            }           
-            do
+                } while (i != z);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Вами было отгадано число " + i);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Вы отгадали с " + v + " попытки");
+
+            }
+            static void guessyou()
             {
-                v++;
-                z = random.Next(s, c);
+                string t = "";
+                Random random = new Random();
+                int v = 0;
+                int[] result = Tools.Varumn();
+                int s = result[0];
+                int c = result[1];
+                int z = 0;
+                Console.WriteLine("введите ваше число");
+                int i = 0;
+                Entering_or_Convertation.UsersFalsesIntenger(ref i);
+                Console.WriteLine("Оставить логи открытыми(видеть какие числа перебирал компьютер )[y/n]");
+                string r = "";
+                Entering_or_Convertation.UsersNeverFalsesAtStr(ref r);
                 if (r == "y")
                 {
-                    if (t == "y")
-                    {
-                        Tools.RandomColorsForeghround();
-                    }
-                    Console.WriteLine("Выбрано число " + z);
-                    Console.ResetColor();
+                    Console.WriteLine("хотите чтобы они были раскрашенны[y/n]");
+                    t = Console.ReadLine();
+                    Tools.ControlString(t);
+
                 }
-                else if (r == "n")
+                do
                 {
+                    v++;
+                    z = random.Next(s, c);
+                    if (r == "y")
+                    {
+                        if (t == "y")
+                        {
+                            Tools.RandomColorsForeghround();
+                        }
+                        Console.WriteLine("Выбрано число " + z);
+                        Console.ResetColor();
+                    }
+                    else if (r == "n")
+                    {
 
+                    }
+
+                } while (z != i);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Вами было загаданно число " + i);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Компьютер отгадал твоё число за " + v + " попыток");
+                if (v > c - s)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("Компьютер сделал больше попыток чем есть всего вариантов!" + "\n" + "Такое случается он просто заново перебирал уже использованные числа");
                 }
 
-            } while (z != i);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Вами было загаданно число " + i);
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Компьютер отгадал твоё число за " + v + " попыток");
-            if (v > c - s)
-            {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Компьютер сделал больше попыток чем есть всего вариантов!" + "\n" + "Такое случается он просто заново перебирал уже использованные числа");
             }
-           
         }
-        
         public static void rainbowchoice()
         {
             start:
@@ -913,27 +919,7 @@ namespace ConsoleApp15
         static public void rainbow3()
         {
 
-        }
-        
-        static void f()
-        {
-            Console.WriteLine("Введите число, факториал котого вы хотите узнать");
-            int answer = 0;
-            Entering_or_Convertation.UsersFalsesIntenger(ref answer);
-            int y = Fact(answer);
-            Console.WriteLine(y);
-            Console.ReadKey();
-        }
-        
-        public static int Fact(int num)
-        {
-            if (num == 1)
-            {
-                return 1;
-            }
-            return num * Fact(num - 1);
-        }
-       
+        }                   
         class Bruteforce
         {
             public Bruteforce()
@@ -1552,8 +1538,15 @@ namespace ConsoleApp15
                         Entering_or_Convertation.UsersNeverFalsesAtStr(ref Value);
                         Massives[NumbersOfMassives][ValueOfMassive] = Value;
                     }                                       
+                    
+                   
 
+                    
                 }
+                
+                
+
+                
             }
         }
         class SuperSu

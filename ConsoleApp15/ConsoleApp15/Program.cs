@@ -27,19 +27,19 @@ namespace ConsoleApp15
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("1-Математические задачи");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine("2-");
+            Console.WriteLine("2-Перевод из разных систем счисления систем счисления ");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("3-Занесенние введёных вами слов в массив и выведение только тех,которые удволетворяют условие.");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("4-Угадай слово.");
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("5- ");
+            Console.WriteLine("5-Разрядные операции ");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("6-Хочешь радугу?");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("7-Нахождение факториала");
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.WriteLine("8-Нахождение синуса ,косинуса,тангенса,котангенса. ");
+            Console.WriteLine("8-Сортировка ");
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("9-Bruteforse в мирных целях");
@@ -54,7 +54,7 @@ namespace ConsoleApp15
                     Mathematic mathematic= new Mathematic();
                     break;
                 case 2:
-                    
+                    Convertation convertation = new Convertation();
                     break;
                 case 3:
                     Key.KeyUni();
@@ -63,16 +63,16 @@ namespace ConsoleApp15
                     GuessTheNumber.guess();
                     break;
                 case 5:
-                    
+                    BitOperations bit = new BitOperations();
                     break;
                 case 6:
-                    rainbowchoice();
+                    Ranbow.rainbowchoice();
                     break;
                 case 7:
                    
                     break;
                 case 8:
-                    
+                    Tasks task = new Tasks();
                     break;
                 case 9:
                     Bruteforce bruteforce = new Bruteforce();
@@ -247,7 +247,7 @@ namespace ConsoleApp15
                         int randomNumber2 = random.Next(s, c);
                         Console.WriteLine(randomNumber1 + " "+Char+" " + randomNumber2 + "-ваш ответ");
                         int sd = Convert.ToInt16(Console.ReadLine());
-                        if (sd == randomNumber1 +Char+ randomNumber2)
+                        if (sd == Answer(randomNumber1, randomNumber2))
                         {
 
                             Console.WriteLine("верно");
@@ -305,7 +305,7 @@ namespace ConsoleApp15
                         Console.WriteLine(randomNumber1 + " " +Char+ " " + randomNumber2 + "-ваш ответ");
                         Entering_or_Convertation.UsersFalsesIntenger(ref sd);
 
-                    } while (randomNumber2 + Char+ randomNumber1 == sd);
+                    } while (Answer(randomNumber1, randomNumber2) == sd);
                 }
                 static void ChooseChar()
                 {
@@ -315,13 +315,38 @@ namespace ConsoleApp15
                     Entering_or_Convertation.UsersFalsesChar(ref YourOperation);
                     if (YourOperation != '+' && YourOperation != '-' && YourOperation != '/' && YourOperation != '*')
                     {
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        
                         Console.WriteLine("Вы ввели неверное значение");
+                        Console.ResetColor();
                         //Console.WriteLine(YourOperation);
                         goto start;
 
                     }
                     Char = YourOperation;
                     
+                }
+                static int Answer(int firstRandom, int secondNumber)
+                {
+                    int result;
+                    if (Char=='+')
+                    {
+                        result = firstRandom + secondNumber;
+                    }
+                    else if(Char=='-')
+                    {
+                        result = firstRandom - secondNumber;
+                    }
+                    else if (Char=='*')
+                    {
+                        result = firstRandom * secondNumber;
+                    }
+                    else 
+                    //if (Char=='/')
+                    {
+                        result = firstRandom / secondNumber;
+                    }
+                    return result;
                 }
 
             }
@@ -683,6 +708,170 @@ namespace ConsoleApp15
                 }
             }
         }
+        class Convertation
+        {
+            private static int  InitialNumberSystem;
+            private static int  FiniteNumberSystem;
+            public Convertation()
+            {
+                Console.WriteLine("Введите систему счисления ИЗ которой вы хотите перевести");
+                firstStart:
+                Entering_or_Convertation.UsersFalsesIntenger(ref InitialNumberSystem);
+                if (InitialNumberSystem < 2 && InitialNumberSystem>36)
+                {
+                    Console.WriteLine("Вы выбрали систему счисления либо избыточную(больше 36) ,либо не существующую впринципе (меньше двоичной)");
+                    goto firstStart;
+                }
+                Console.WriteLine("Введите систему счисления В которою вы хотите перевести");
+                Entering_or_Convertation.UsersFalsesIntenger(ref FiniteNumberSystem);
+                secondStart:
+                if(FiniteNumberSystem < 2 && FiniteNumberSystem < 36)
+                {
+                    Console.WriteLine("Вы выбрали систему счисления либо избыточную(больше 36) ,либо не существующую впринципе (меньше двоичной)");
+                    goto secondStart;
+                }
+                GoToTen();
+            }
+            static void GoToTen()
+            {
+                Console.WriteLine("Введите число которое хотите перевести в "+FiniteNumberSystem+"ричную систему счисления");
+                string input = "";
+                Entering_or_Convertation.UsersNeverFalsesAtStr(ref input);
+                string INPUT = input.ToUpper();
+                int intermediateCode = 0;
+                int degree = 0;
+                Console.WriteLine(INPUT[0]+"-1 "+INPUT[1]+"-2 "+INPUT[2]+"-3 " +INPUT.Length+" длинна");
+                for (int NumberOfElement=INPUT.Length;NumberOfElement>0;NumberOfElement--)
+                {
+                    intermediateCode += SymbolsControl(INPUT[NumberOfElement]) * (int)Math.Pow(InitialNumberSystem, degree);
+                    degree++;
+                }
+                Console.WriteLine(intermediateCode+" число в десятичной степению");
+            }
+            static int SymbolsControl(char input )
+            {
+                int output = 0;
+                switch(input)
+                {
+                    case '1':
+                        output = 1;
+                        break;
+                    case '2':
+                        output = 2;
+                        break;
+                    case '3':
+                        output = 3;
+                        break;
+                    case '4':
+                        output = 4;
+                        break;
+                    case '5':
+                        output = 5;
+                        break;
+                    case '6':
+                        output = 6;
+                        break;
+                    case '7':
+                        output = 7;
+                        break;
+                    case '8':
+                        output = 8;
+                        break;
+                    case '9':
+                        output = 9;
+                        break;
+                    case '0':
+                        output = 0;
+                        break;
+                    case 'A':
+                        output = 10;
+                        break;
+                    case 'B':
+                        output = 11;
+                        break;
+                    case 'C':
+                        output = 12;
+                        break;
+                    case 'D':
+                        output = 13;
+                        break;
+                    case 'E':
+                        output = 14;
+                        break;
+                    case 'F':
+                        output = 15;
+                        break;
+                    case 'G':
+                        output = 16;
+                        break;
+                    case 'H':
+                        output = 17;
+                        break;
+                    case 'I':
+                        output = 18;
+                        break;                       
+                    case 'J':
+                        output = 19;
+                        break;
+                    case 'K':
+                        output = 20;
+                        break;
+                    case 'L':
+                        output = 21;
+                        break;
+                    case 'M':
+                        output = 22;
+                        break;
+                    case 'N':
+                        output = 23;
+                        break;
+                    case 'O':
+                        output = 24;
+                        break;
+                    case 'P':
+                        output = 25;
+                        break;
+                    case 'Q':
+                        output = 26;
+                        break;
+                    case 'R':
+                        output = 27;
+                        break;
+                    case 'S':
+                        output = 28;
+                        break;
+                    case 'T':
+                        output = 29;
+                        break;
+                    case 'U':
+                        output = 30;
+                        break;
+                    case 'V':
+                        output = 31;
+                        break;
+                    case 'W':
+                        output = 32;
+                        break;
+                    case 'X':
+                        output = 33;
+                        break;
+                    case 'Y':
+                        output = 34;
+                        break;
+                    case 'Z':
+                        output = 35;
+                        break;
+                    default:
+                        Console.WriteLine("Неверное значение нарушило работу программы ,введите любой символ,чтобы продолжить");
+                        Console.ReadKey();
+                        return0();
+                        break;
+                        
+                }
+                return output;
+            }
+        }
+
         class Key
         {
             public static void KeyUni()
@@ -856,76 +1045,143 @@ namespace ConsoleApp15
 
             }
         }
-        public static void rainbowchoice()
+        class BitOperations
         {
-            start:
-            Console.WriteLine("выберите версию программы" + "\n" + "1-первая версия (красим буквы)" + "\n" + "2-вторая версия(задний фон)" + "\n" + "3-третья версия");
-            int i = 0;
-            Entering_or_Convertation.UsersFalsesIntenger(ref i);
-            switch (i)
+            public BitOperations()
             {
-                case 1:
-                    rainbow2();                 
-                    break;
-                case 2:
-                    rainbow3();                   
-                    break;
-                default:
-                    FalseCondition();
-                    goto start;
-                    
+                start:
+                Console.WriteLine("Добро пожаловать ,выберите битовую операцию,которую хотите воспроизвести \n 1-Логическое или \n 2-Логическое и \n 3-Исключающее или");
+                int choice = 0;
+                Entering_or_Convertation.UsersFalsesIntenger(ref choice);
+                switch(choice)
+                {
+                    case 1:
+                        LogicalOr();
+                        break;
+                    case 2:
+                        LogicalAnd();
+                        break;
+                    case 3:
+                        LogicalXor();
+                        break;
+                    default:
+                        FalseCondition();
+                        goto start;
+                }
+            }
+            static void EnterTwoBytes(ref int firstNumber,ref int secondNumber)
+            {
+                Console.WriteLine("Введите первое число");
+                Entering_or_Convertation.UsersFalsesIntenger(ref firstNumber);
+                Console.WriteLine("Введите второе число");                
+                Entering_or_Convertation.UsersFalsesIntenger(ref secondNumber);
+            }
+            static void LogicalOr()
+            {
+                int firstNumber = 0;
+                int secondNumber = 0;
+                EnterTwoBytes(ref firstNumber,ref secondNumber);
+                int result = firstNumber | secondNumber;
+                Result(result);
+            }
+            static void LogicalAnd()
+            {
+                int firstNumber = 0;
+                int secondNumber = 0;
+                EnterTwoBytes(ref firstNumber, ref secondNumber);
+                int result = firstNumber & secondNumber;
+                Result(result);
+            }
+            static void LogicalXor()
+            {              
+                int firstNumber = 0;
+                int secondNumber = 0;
+                EnterTwoBytes(ref firstNumber,ref secondNumber);
+                int result = firstNumber ^ secondNumber;
+                Result(result);
+            }
+            static void Result(int result)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("Результат операции равен "+result);
+                Console.ResetColor();
             }
         }
-
-        public static void rainbow2()
+        class Ranbow
         {
-            int[] i = new int[11];
-            Console.Write("Нажимай y и перед тобой будет новораскрашенное слово радуга ");
-            string h = "";
-            Random random = new Random();
-           
+
+            public static void rainbowchoice()
+            {
+                start:
+                Console.WriteLine("выберите версию программы" + "\n" + "1-первая версия (красим буквы)" + "\n" + "2-вторая версия(задний фон)" + "\n" + "3-третья версия");
+                int i = 0;
+                Entering_or_Convertation.UsersFalsesIntenger(ref i);
+                switch (i)
+                {
+                    case 1:
+                        rainbow2();
+                        break;
+                    case 2:
+                        rainbow3();
+                        break;
+                    default:
+                        FalseCondition();
+                        goto start;
+
+                }
+            }
+
+            static void rainbow2()
+            {
+                int[] i = new int[11];
+                Console.Write("Нажимай y и перед тобой будет новораскрашенное слово радуга ");
+                string h = "";
+                Random random = new Random();
+
                 Console.WriteLine("Ваш вердикт");
                 start:
                 h = "";
                 Entering_or_Convertation.UsersNeverFalsesAtStr(ref h);
                 if (h == "y")
                 {
-                    
-                        string[] mass = new string[] { "Р", "А", "Д", "У", "Г", "А", "!", "У", "И", "И", "!" };
-                        for (int z = 0; z < mass.Length; z++)
-                        {
-                            Tools.RandomColorsForeghround();
-                            Console.Write(mass[z]);
-                            Console.ResetColor();
 
-                        }
-                       goto start;
+                    string[] mass = new string[] { "Р", "А", "Д", "У", "Г", "А", "!", "У", "И", "И", "!" };
+                    for (int z = 0; z < mass.Length; z++)
+                    {
+                        Tools.RandomColorsForeghround();
+                        Console.Write(mass[z]);
+                        Console.ResetColor();
 
-                    
+                    }
+                    goto start;
+
+
                 }
                 else if (h == "n")
                 {
                     Console.Write("пока,пока");
                     Console.ReadLine();
-                   
+
                 }
                 else
                 {
                     Tools.ControlValue();
                 }
 
-           
-        }
-        static public void rainbow3()
-        {
 
-        }                   
+            }
+            static void rainbow3()
+            {
+
+            }
+        }
         class Bruteforce
         {
             public Bruteforce()
             {
                 start:
-                Console.WriteLine("Введите номер операции \n 1-Составные и простые числа \n 2-Проверка чисел на кратность");
+                Console.WriteLine("Введите номер операции \n 1-Составные и простые числа \n 2-Проверка чисел на кратность \n 3-Первый брутфорс паролей" +
+                    "\n 4-Второй брутфорс паролей \n  5-Третий брутфорс");
                 int choose = 0;
                 Entering_or_Convertation.UsersFalsesIntenger(ref choose);
                 switch(choose)
@@ -956,19 +1212,24 @@ namespace ConsoleApp15
                 Console.WriteLine("Зелёным цветом помечены составные числа, красным простые,цикл бесконечен,чтобы закончить выйдете из программы,введите любую кнопку ,чтобы начать");
                 Console.ReadLine();
                 double hash = 0;
-                int g = 0;
+                int numbers = 0;
                 bool check =false;
                 while (true)
                 {
-                    g++;
-                    for (int i=2;i<g;i++)
+                    numbers++;
+                    for (int i = 2 ; i < numbers ; i++)
                     {
                         //Алгоритм0 g/i<hash || g/i
-                        //Алгоритм1 проблема алгоритма находится в том,что при единственном получении дроби числу присваивается значение составное , а так будет постоянно начиная с трёх 
-                        hash = ((double)g) / ((double)i);
-                        if (hash==g/i)
+                        // hash = ((double)numbers) / ((double)i);
+                        // if (hash==numbers/i) если целочисленное равно числу с плавающей точкой ,то считает его составным
+                        //второй алгоритм ищет остаток и ,если находит,то красит строчку
+
+                        if (numbers % i == 0)
                         {
-                            check = true;                           
+                            check = true;
+                            // добавление разрыва цикла для исключения лишних операций 
+                            break;
+
                         }                                              
                     }
                     if (check)
@@ -979,7 +1240,7 @@ namespace ConsoleApp15
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;                                              
                     }
-                    Console.WriteLine(g);
+                    Console.WriteLine(numbers);
                     check = false;
                 }
             }
@@ -1308,16 +1569,7 @@ namespace ConsoleApp15
                     Console.WriteLine("S=" + S);
                 }
                 Console.ReadLine();
-            }
-            //class UsersFalses
-            //{
-            //    public UsersFalses()
-            //    {
-
-            //    }
-            //}
-
-
+            }         
             public static void UsersFalsesDouble(ref double x)
             {
 
@@ -1500,13 +1752,13 @@ namespace ConsoleApp15
             public Tasks()
             {
                 start:
-                Console.WriteLine("Введите номер задачи ,которую вы хотите выполнить 1-Сортировка списков в порядке возрастания");
+                Console.WriteLine("Введите номер задачи ,которую вы хотите выполнить \n 1-Сортировка списков в порядке возрастания");
                 int choice = 0;
                 Entering_or_Convertation.UsersFalsesIntenger(ref choice);
                 switch(choice)
                 {
                     case 1:                       
-                        Lists();
+                        Lists.CountOfLists();
                         break;
                     case 2:
                         break;
@@ -1519,34 +1771,111 @@ namespace ConsoleApp15
                         
                 }
             }
-            void Lists()
+            class Lists
             {
-                Console.WriteLine("Введите количество списков");
-                int  sizeOfSteppedArray = 0;
-                Entering_or_Convertation.UsersFalsesIntenger(ref sizeOfSteppedArray);
-                string[][] Massives = new string [sizeOfSteppedArray] [];
-                for(int NumbersOfMassives=0; NumbersOfMassives<Massives.Length;NumbersOfMassives ++)
+                public static void CountOfLists()
                 {
-                    Console.WriteLine("Введите размер "+(NumbersOfMassives+1)+" массива");
-                    int sizeOfArray = 0;
-                    Entering_or_Convertation.UsersFalsesIntenger(ref sizeOfArray);
-                    Massives[NumbersOfMassives] = new string[sizeOfArray];
-                    for (int ValueOfMassive = 0; ValueOfMassive < Massives[NumbersOfMassives].Length; ValueOfMassive++)
+                    Console.WriteLine("Введите количество списков");
+                    int numbersOfElements = 0;
+                    int sizeOfSteppedArray = 0;
+                    Entering_or_Convertation.UsersFalsesIntenger(ref sizeOfSteppedArray);
+                    string[][] Massives = new string[sizeOfSteppedArray][];
+                    for (int NumbersOfMassives = 0; NumbersOfMassives < Massives.Length; NumbersOfMassives++)
                     {
-                        Console.WriteLine("Введите значение " + ValueOfMassive + " члена " + NumbersOfMassives + " массива");
-                        string Value = "";
-                        Entering_or_Convertation.UsersNeverFalsesAtStr(ref Value);
-                        Massives[NumbersOfMassives][ValueOfMassive] = Value;
-                    }                                       
-                    
-                   
-
-                    
+                        Console.BackgroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("Введите размер " + (NumbersOfMassives + 1) + " массива");
+                        Console.ResetColor();
+                        int sizeOfArray = 0;
+                        Entering_or_Convertation.UsersFalsesIntenger(ref sizeOfArray);
+                        numbersOfElements += sizeOfArray;
+                        Massives[NumbersOfMassives] = new string[sizeOfArray];
+                        for (int ValueOfMassive = 0; ValueOfMassive < Massives[NumbersOfMassives].Length; ValueOfMassive++)
+                        {
+                            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                            Console.WriteLine("Введите значение " + ValueOfMassive + " члена " + (NumbersOfMassives+1) + " массива");
+                            Console.ResetColor();
+                            string Value = "";
+                            Entering_or_Convertation.UsersNeverFalsesAtStr(ref Value);
+                            Massives[NumbersOfMassives][ValueOfMassive] = Value;
+                        }
+                    }
+                    string [] bigArray=new string  [numbersOfElements] ;
+                    MergingOfArray_FirstRealizaation(Massives,ref bigArray);
+                    start:
+                    Console.WriteLine("Введите операцию которую вы хотите сделать со списками \n 1-Отсортировать список в порядке убывания/возрастания " +
+                        "\n 2-Отсортировать по алфавиту(пока не реализованно)");
+                    int operation=0;
+                    Entering_or_Convertation.UsersFalsesIntenger(ref operation);                    
+                    switch (operation)
+                    {
+                        case 1:
+                            SortBySize(bigArray);
+                            break;
+                        case 2:
+                            break;
+                        //default:
+                        //    FalseCondition();
+                        //    goto start;
+                            
+                    }
                 }
-                
-                
+                static void MergingOfArray_FirstRealizaation(string [][] steppingArray, ref string [] convertedSteppingArray)
+                {
+                    string result="";
+                    int counterOfElements = 0;
+                    for (int counter=0; counter < steppingArray.Length ; counter ++)
+                    {
+                        for (int secondCounter=0 ; secondCounter < steppingArray[counter].Length; secondCounter ++ )
+                        {
+                            convertedSteppingArray[counterOfElements] = steppingArray[counter][secondCounter];                            
+                            result = result + " " + convertedSteppingArray[counterOfElements];
+                            counterOfElements++;
+                        }
+                    }
+                    Console.WriteLine("Глобальный массив -" + result);
+                }
+                static void SortBySize(string[] bigArray)
+                {
+                    string[] totalArray = new string[bigArray.Length];
+                    int checker = 0;
+                    string Result = "";
+                    for (int y = 0; y < bigArray.Length; y++)
+                    {
+                        Result += " " + bigArray[y];
+                    }
+                    Console.WriteLine(Result);
+                    for (int firstCounter=0 ; firstCounter < bigArray.Length ; firstCounter ++)
+                    {
+                        
+                        checker = firstCounter;
+                        for (int secondCounter=firstCounter; secondCounter>=0 ;secondCounter --)
+                        {
+                            if (bigArray[firstCounter].Length >= bigArray[secondCounter].Length)
+                            {
+                                checker = secondCounter;
+                            }                                                   
+                        }
+                        if (checker < firstCounter)
+                        {
+                            for (int shift = firstCounter; shift > firstCounter - checker; shift--)
+                            {
+                                bigArray[shift] = bigArray[shift - 1];
+                                //Просмотр массива
 
-                
+
+                            }
+                        }
+                       //bigArray[checker] = bigArray[firstCounter];
+                    }
+                    string result = "";
+                    for (int i = 0; i < bigArray.Length; i++)
+                    {
+                        result += " " + bigArray[i];
+                    }
+                    Console.WriteLine(result);
+                    Console.WriteLine("whatafuck");
+                }
+
             }
         }
         class SuperSu
@@ -1557,9 +1886,14 @@ namespace ConsoleApp15
                 
             }
         }
-
+        //при отличном значении в ветви switch-case не прописывать goto ,а просто перезапустить метод
             
         
 
     }
 }
+/*ИДЕИ
+ * 1-перевод из n системы счисления в r
+ * 2-создание списка рандомных символов по типу брутфорс словаря
+ * 3-
+ */ 

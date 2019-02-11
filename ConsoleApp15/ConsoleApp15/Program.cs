@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp15
@@ -44,6 +45,9 @@ namespace ConsoleApp15
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("9-Bruteforse в мирных целях");
             Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("10-Игра виселица");
+            Console.ResetColor();
             Console.WriteLine("*УКАЖИТЕ НОМЕР ОПЕРАЦИИ*");
             int thebeggining = 0;
             start:
@@ -75,8 +79,10 @@ namespace ConsoleApp15
                     Tasks task = new Tasks();
                     break;
                 case 9:
-                    Bruteforce bruteforce = new Bruteforce();
-                    
+                    Bruteforce bruteforce = new Bruteforce();                   
+                    break;
+                case 10:
+                    Viselica.EnterClass();
                     break;
                 case 0:
                     Experiments experiments = new Experiments();
@@ -1878,6 +1884,99 @@ namespace ConsoleApp15
 
             }
         }
+
+        
+        class Viselica
+        {
+                private static string SecretWorld;
+                private static char[] Shifro;
+                public static int Attempt;
+                private static string ShifroString;
+                public static void EnterClass()
+                {
+                    Console.WriteLine("Загадайте слово");
+                    string input = Console.ReadLine();
+                    SecretWorld = input.ToLower();
+                    Attempt = 5;
+                    DoShifro();
+                }
+                static void DoShifro()
+                {
+                    ShifroString = new string('*', SecretWorld.Length);
+                    Shifro = ShifroString.ToCharArray();                    
+                    DoDeshifro();
+                }
+                static void DoDeshifro()
+                {
+                    Console.Clear();
+                    Thread myThread = new Thread(ThreadHelper);
+                    myThread.Start();
+                    Thread checker = new Thread(Checker);
+                    checker.Start();
+                    Console.WriteLine("Отгадайте слово " + ShifroString + " \n У вас " + Attempt + " попыток");                                     
+                    string guess = Console.ReadLine();
+                    if (guess.Length > SecretWorld.Length)
+                    {
+                        for (int counterFirst = 0; counterFirst < SecretWorld.Length; counterFirst++)
+                        {
+                            Shifro[counterFirst] = guess[counterFirst];
+                        }
+                        
+                    }
+                    else if (guess.Length < SecretWorld.Length)
+                    {
+                        //for ()
+                        //{
+
+                        //}
+
+
+                    }
+                    for (int counter = 0; guess.Length > counter; counter++)
+                    {
+                        if (SecretWorld[counter] == guess[counter])
+                        {
+                            Shifro[counter] = SecretWorld[counter];
+                            ShifroString = new string(Shifro);                          
+                        }
+                    }                   
+                    Attempt--;
+                    Check();
+                    DoDeshifro();
+                }
+                static void Check()
+                {
+
+                    if (SecretWorld == ShifroString)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Вы отгадали слово " + ShifroString + " с" + Attempt + " попытки");
+                        Console.ReadLine();
+                    }
+                }
+                static void ThreadHelper()
+                {                   
+                    Thread.Sleep(15000);
+                    Console.WriteLine("Вы не уложились в 15 секунд");
+                    Viselica.Attempt--;
+                    DoDeshifro();
+                }
+                static void Checker()
+                {
+                  Thread.Sleep(0);
+                  if (Viselica.Attempt <= 0)
+                  {
+                    Console.WriteLine("GAME OVER !");
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                    //надо вырубить первый поток
+                  }
+                }
+
+
+        }
+           
+        
         class SuperSu
         {
 

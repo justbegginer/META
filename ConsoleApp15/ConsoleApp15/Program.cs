@@ -10,7 +10,7 @@ namespace ConsoleApp15
     class Program
     {
         static void Main(string[] args)
-        {                        
+        {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("                  ДОБРО ПОЖАЛОВАТЬ В ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -752,16 +752,35 @@ namespace ConsoleApp15
                     intermediateCode += SymbolsControl(INPUT[NumberOfElement-1]) * (int)Math.Pow(InitialNumberSystem, degree);
                     degree++;
                 }
-                Console.WriteLine(intermediateCode+" число в десятичной степению");
+                //Console.WriteLine(intermediateCode+" число в десятичной степению");
                 GoToFinite(intermediateCode);
                 //рабочий алгоритм 
             }
             static void GoToFinite(int intermidiateCode)
             {
+                //int tesrCode = intermidiateCode;
+                //for (int checker=0;intermidiateCode> ;checker++)
+                //{
+
+                //}
+                string symbols = "";
+                int counter = 0;
                 do
                 {
+                    symbols = SymbolsControlReverse(intermidiateCode % FiniteNumberSystem) + symbols;
+                    //Console.WriteLine("Коэффициент "+ SymbolsControlReverse(intermidiateCode % FiniteNumberSystem));
+                    intermidiateCode /= FiniteNumberSystem;
+                    //Console.WriteLine("Следующее делимое "+intermidiateCode);
+                    counter++;
+                    
 
-                } while (true);
+                } while (intermidiateCode > FiniteNumberSystem);
+                symbols = SymbolsControlReverse(intermidiateCode) + symbols;
+                Console.WriteLine("Итог в "+FiniteNumberSystem+"ичной системе счисления :"+symbols);
+                //1 проблема- скорее всего результат перевёрнут и последний(тоесть первый в нормальном порядке)член пропускается из-за кривого условия do-while ,где последнее значение не учитывается)
+                //1 проблема-Решена 
+                //2 проблема -для получении нужного числа,надо использовать !обратную! таблицу подстановки 
+                Console.ReadKey();
             }
             static int SymbolsControl(char input )
             {
@@ -880,10 +899,130 @@ namespace ConsoleApp15
                         Console.WriteLine("Неверное значение нарушило работу программы ,введите любой символ,чтобы продолжить");
                         Console.ReadKey();
                         return0();
-                        break;
-                        
+                        break;                        
                 }
                 //таблица подстановки прошла первую проверку
+                return output;
+            }
+            static char SymbolsControlReverse(int input)
+            {
+                char output = ' ';
+                switch (input)
+                {
+                    case 1:
+                        output = '1';
+                        break;
+                    case 2:
+                        output = '2';
+                        break;
+                    case 3:
+                        output = '3';
+                        break;
+                    case 4:
+                        output = '4';
+                        break;
+                    case 5:
+                        output = '5';
+                        break;
+                    case 6:
+                        output = '6';
+                        break;
+                    case 7:
+                        output = '7';
+                        break;
+                    case 8:
+                        output = '8';
+                        break;
+                    case 9:
+                        output = '9';
+                        break;
+                    case 0:
+                        output = '0';
+                        break;
+                    case 10:
+                        output = 'A';
+                        break;
+                    case 11:
+                        output = 'B';
+                        break;
+                    case 12:
+                        output = 'C';
+                        break;
+                    case 13:
+                        output = 'D';
+                        break;
+                    case 14:
+                        output = 'E';
+                        break;
+                    case 15:
+                        output = 'F';
+                        break;
+                    case 16:
+                        output = 'G';
+                        break;
+                    case 17:
+                        output = 'H';
+                        break;
+                    case 18:
+                        output = 'Z';
+                        break;
+                    case 19:
+                        output = 'J';
+                        break;
+                    case 20:
+                        output = 'K';
+                        break;
+                    case 21:
+                        output = 'L';
+                        break;
+                    case 22:
+                        output = 'M';
+                        break;
+                    case 23:
+                        output = 'N';
+                        break;
+                    case 24:
+                        output = 'O';
+                        break;
+                    case 25:
+                        output = 'P';
+                        break;
+                    case 26:
+                        output = 'Q';
+                        break;
+                    case 27:
+                        output = 'R';
+                        break;
+                    case 28:
+                        output = 'S';
+                        break;
+                    case 29:
+                        output = 'T';
+                        break;
+                    case 30:
+                        output = 'U';
+                        break;
+                    case 31:
+                        output = 'V';
+                        break;
+                    case 32:
+                        output = 'W';
+                        break;
+                    case 33:
+                        output = 'X';
+                        break;
+                    case 34:
+                        output = 'Y';
+                        break;
+                    case 35:
+                        output = 'Z';
+                        break;
+                    default:
+                        Console.WriteLine("Неверное значение нарушило работу программы ,введите любой символ,чтобы продолжить");
+                        Console.ReadKey();
+                        return0();
+                        break;
+                }
                 return output;
             }
         }
@@ -1673,6 +1812,10 @@ namespace ConsoleApp15
                 {
                     Console.WriteLine("All logs here" + Logs.Log);                    
                 }
+                else if (manual=="clear")
+                {
+                    Console.Clear();
+                }
             }
             private static void man()
             {
@@ -1818,8 +1961,8 @@ namespace ConsoleApp15
                             Massives[NumbersOfMassives][ValueOfMassive] = Value;
                         }
                     }
-                    string [] bigArray=new string  [numbersOfElements] ;
-                    MergingOfArray_FirstRealizaation(Massives,ref bigArray);
+                    //string [] bigArray=new string  [numbersOfElements] ;
+                    //MergingOfArray_FirstRealizaation(Massives,ref bigArray);
                     start:
                     Console.WriteLine("Введите операцию которую вы хотите сделать со списками \n 1-Отсортировать список в порядке убывания/возрастания " +
                         "\n 2-Отсортировать по алфавиту(пока не реализованно)");
@@ -1828,9 +1971,12 @@ namespace ConsoleApp15
                     switch (operation)
                     {
                         case 1:
+                            string[] bigArray = new string[numbersOfElements];
+                            MergingOfArray_FirstRealizaation(Massives,ref bigArray);
                             SortBySize(bigArray);
                             break;
                         case 2:
+                            
                             break;
                         //default:
                         //    FalseCondition();
@@ -1893,6 +2039,10 @@ namespace ConsoleApp15
                     }
                     Console.WriteLine(result);
                     Console.WriteLine("whatafuck");
+                }
+                static void DoOneBigArray()
+                {
+
                 }
 
             }
@@ -1998,9 +2148,40 @@ namespace ConsoleApp15
                 
             }
         }
-        //при отличном значении в ветви switch-case не прописывать goto ,а просто перезапустить метод
-            
         
+        //при отличном значении в ветви switch-case не прописывать goto ,а просто перезапустить метод
+        static bool checkPalindrome(string inputString)
+        {
+            bool result = true;
+            //Console.WriteLine(inputString.Length-1);
+            //bool result = true;
+            //for (int counterFirst = 0, counterSecond = inputString.Length - 1; counterFirst != counterSecond && counterSecond - counterFirst != 1; counterFirst++, counterSecond--)
+            //{
+            //    Console.WriteLine(counterFirst + " " + counterSecond);
+            //    if (inputString[counterFirst] == inputString[counterSecond])
+            //    {
+            //        result = true;
+
+            //    }
+            //    else
+            //    {
+            //        result = false;
+            //        break;
+            //    }
+            //}
+            //return result;
+            for (int counterFirst = 0, counterSecond = inputString.Length - 1, checkTrue = inputString.Length ; checkTrue>0 ; counterFirst++, counterSecond--, checkTrue -= 2)
+            {
+                if (inputString[counterFirst]!=inputString[counterSecond])
+                {
+                    result = false;
+                    break;
+                }
+            }
+            return result;
+        }
+
+
 
     }
 }

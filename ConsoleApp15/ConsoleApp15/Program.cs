@@ -1925,6 +1925,17 @@ namespace ConsoleApp15
                 {
                     Console.Clear();
                 }
+                else 
+                {
+                    string[] commands = manual.Split(' ');
+                    if (commands.Length>1 )
+                    {
+                        if (commands[0]=="saveThis")
+                        {
+
+                        }
+                    }
+                }
             }
             private static void man()
             {
@@ -1954,18 +1965,23 @@ namespace ConsoleApp15
                 UsersFalses(ref round);
                 output = Math.Round(entering, round);
             }
-            
+
             class Logs
             {
                 /// 
-               
+
                 /// internal- разобратьтся как работает 
-                internal static string Log;
+                internal static List<string> Log = new List<string>();
                 public Logs(string entering)
                 {
-                    Log = Log + " " +entering ;
-                   
+                    Log.Add(entering);
+
                 }
+                //public static List<string> Get()
+                //{
+
+                //}
+                //public Logs
             }
         }
         public static void doyouwantmore(out string y )
@@ -2266,9 +2282,9 @@ namespace ConsoleApp15
         public static List<string> Notes=new List<string>();
         public FilesAndResults()
         {
-            Console.WriteLine("");
+            Console.WriteLine("Введите пароль");
             string password = "";
-            UsersFalses(ref password);
+            UsersFalses(ref password);           
         }
     }
 

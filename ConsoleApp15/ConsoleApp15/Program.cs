@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using static ConsoleApp15.Program.Entering_or_Convertation;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -11,6 +12,7 @@ namespace ConsoleApp15
     {
         static void Main(string[] args)
         {
+           
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("                  ДОБРО ПОЖАЛОВАТЬ В ");
             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -98,12 +100,12 @@ namespace ConsoleApp15
         {
             public Mathematic()
             {
-                start:
+            start:
                 Console.WriteLine("Выберите математическую задачу , которую вы хотите решить \n 1-Теорема Пифагора(нахождение катетов или гипотенузы). \n 2-Арифмитический тест  \n" +
-                    " 3-Нахождение площади \n 4-Нахождение синуса , косинуса , тангенса , котангенса \n 5-Нахождение факториала ");
+                    " 3-Нахождение площади \n 4-Нахождение синуса , косинуса , тангенса , котангенса \n 5-Нахождение факториала \n 6-Перевод из десятичной дроби в простую (и наоборот)");
                 int choice = 0;
                 Entering_or_Convertation.UsersFalses(ref choice);
-                switch(choice)
+                switch (choice)
                 {
                     case 1:
                         pif();
@@ -120,10 +122,13 @@ namespace ConsoleApp15
                     case 5:
                         Factorial.EnterFactorial();
                         break;
+                    case 6:
+                        ConvertFractions convertFractions = new ConvertFractions();
+                        break;
                     default:
                         FalseCondition();
                         goto start;
-                        
+
                 }
 
             }
@@ -156,7 +161,7 @@ namespace ConsoleApp15
                 {
                     case 1:
                         {
-                            start:
+                        start:
                             Console.WriteLine("введите длину первого катета ");
                             double b = 0;
                             Entering_or_Convertation.UsersFalses(ref b);
@@ -180,7 +185,7 @@ namespace ConsoleApp15
                         break;
                     case 2:
                         {
-                            start:
+                        start:
                             Console.WriteLine("введите длину гипотенузы");
                             double b = 0;
                             Entering_or_Convertation.UsersFalses(ref b);
@@ -216,7 +221,7 @@ namespace ConsoleApp15
                 private static char Char;
                 public static void Arif()
                 {
-                    start:
+                start:
                     Console.WriteLine("ДОБРО ПОЖАЛОВАТЬ В МОЮ ПРОГРАММУ." + "\n" + "ВЫБЕРИТЕ ЖЕЛАЕМУЮ ПРОГРАММУ" + "\n" +
                         "1-Вам дадут тест ,количество вопросов вы фиксируете сами " + "\n" + "2-Вам дадут тест и он будет длится до тех пор ,пока вы не ошибётесь или пока не выйдете");
                     int answer = 0;
@@ -251,7 +256,7 @@ namespace ConsoleApp15
                         i++;
                         int randomNumber1 = random.Next(s, c);
                         int randomNumber2 = random.Next(s, c);
-                        Console.WriteLine(randomNumber1 + " "+Char+" " + randomNumber2 + "-ваш ответ");
+                        Console.WriteLine(randomNumber1 + " " + Char + " " + randomNumber2 + "-ваш ответ");
                         int sd = Convert.ToInt16(Console.ReadLine());
                         if (sd == Answer(randomNumber1, randomNumber2))
                         {
@@ -308,21 +313,21 @@ namespace ConsoleApp15
                         randomNumber1 = random.Next(s, c);
                         randomNumber2 = random.Next(s, c);
 
-                        Console.WriteLine(randomNumber1 + " " +Char+ " " + randomNumber2 + "-ваш ответ");
+                        Console.WriteLine(randomNumber1 + " " + Char + " " + randomNumber2 + "-ваш ответ");
                         Entering_or_Convertation.UsersFalses(ref sd);
 
                     } while (Answer(randomNumber1, randomNumber2) == sd);
                 }
                 static void ChooseChar()
                 {
-                    start:
+                start:
                     Console.WriteLine("Введите операцию , которая будет в тесте");
                     char YourOperation = ' ';
                     Entering_or_Convertation.UsersFalses(ref YourOperation);
                     if (YourOperation != '+' && YourOperation != '-' && YourOperation != '/' && YourOperation != '*')
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        
+
                         Console.WriteLine("Вы ввели неверное значение");
                         Console.ResetColor();
                         //Console.WriteLine(YourOperation);
@@ -330,24 +335,24 @@ namespace ConsoleApp15
 
                     }
                     Char = YourOperation;
-                    
+
                 }
                 static int Answer(int firstRandom, int secondNumber)
                 {
                     int result;
-                    if (Char=='+')
+                    if (Char == '+')
                     {
                         result = firstRandom + secondNumber;
                     }
-                    else if(Char=='-')
+                    else if (Char == '-')
                     {
                         result = firstRandom - secondNumber;
                     }
-                    else if (Char=='*')
+                    else if (Char == '*')
                     {
                         result = firstRandom * secondNumber;
                     }
-                    else 
+                    else
                     //if (Char=='/')
                     {
                         result = firstRandom / secondNumber;
@@ -360,7 +365,7 @@ namespace ConsoleApp15
             {
                 public static void area()
                 {
-                    start:
+                start:
                     Console.WriteLine("Привет,если ты сюда попал значит ты хочешь найти площадь.Ну что ж выбери способ" + "\n" + "1-Найдём площадь по высоте и основанию(треугольник)");
                     Console.ForegroundColor = ConsoleColor.Green;
                     //!!! а может заюзать метод с рандомными цветами(когда сделаю)
@@ -583,7 +588,7 @@ namespace ConsoleApp15
                 private static void whatdoyouknow(ref double fact)
                 {
                     fact = 0;
-                    start:
+                start:
                     Console.WriteLine("Что вы знаете ?" + "\n" + "1-Угол" + "\n" + "2-Синус");
                     int i = 0;
                     Entering_or_Convertation.UsersFalses(ref i);
@@ -612,7 +617,7 @@ namespace ConsoleApp15
             {
                 public static void trig()
                 {
-                    start:
+                start:
                     Console.WriteLine("Что вы хотите найти?");
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("Косинус-");
@@ -700,7 +705,7 @@ namespace ConsoleApp15
                     int answer = 0;
                     Entering_or_Convertation.UsersFalses(ref answer);
                     int y = Fact(answer);
-                    Console.WriteLine("Факториал "+y);
+                    Console.WriteLine("Факториал " + y);
                     Console.ReadKey();
                 }
 
@@ -711,6 +716,58 @@ namespace ConsoleApp15
                         return 1;
                     }
                     return num * Fact(num - 1);
+                }
+            }
+            class ConvertFractions
+            {
+                public ConvertFractions(int number = 0)
+                {
+                    start:
+                    Console.WriteLine("1-Из десятичной дроби в простую \n 2-Из простой дроби в десятичную");
+                    int choice = 0;
+                    UsersFalses(ref choice);
+                    switch (choice)
+                    {
+                        case 1:
+                            ToSimple();
+                            break;
+                        case 2:
+                            FromSimple(number);
+                            break;
+                        default:
+                            FalseCondition();
+                            goto start;
+                    }
+                }
+                private void ToSimple(int number = 0,string str="")
+                {
+                    Console.WriteLine("Введите число ");
+                    UsersFalses(ref str);
+                    string[] array = str.Split(',');
+                    Console.WriteLine();
+                    int numerator=Convert.ToInt32(Convert.ToDouble(str)*Math.Pow(10,array[1].Length));
+                    int denomerator=Convert.ToInt32(1*Math.Pow(10,array[1].Length));
+                    for (int counter = 2 ; counter < numerator & counter < denomerator ; counter ++)
+                    {
+                        if (numerator%counter==0 & denomerator%counter==0)
+                        {
+                            numerator /= counter;
+                            denomerator /= counter;
+                            counter = 1;
+                        }
+                    }
+                    Console.WriteLine( numerator+"/"+denomerator);
+                    
+                }
+                private void FromSimple(int number = 0)
+                {
+                    Console.WriteLine("Введите числитель");
+                    int numerator=0 ;
+                    UsersFalses(ref numerator);
+                    Console.WriteLine("Введите знаменатель");
+                    int denomenator = 0;
+                    UsersFalses(ref numerator);
+                    Console.WriteLine(numerator/denomenator);
                 }
             }
         }
@@ -1205,7 +1262,7 @@ namespace ConsoleApp15
             public BitOperations()
             {
                 start:
-                Console.WriteLine("Добро пожаловать ,выберите битовую операцию,которую хотите воспроизвести \n 1-Логическое или \n 2-Логическое и \n 3-Исключающее или");
+                Console.WriteLine("Добро пожаловать ,выберите битовую операцию,которую хотите воспроизвести \n 1-Логическое или \n 2-Логическое и \n 3-Исключающее или \n 4-Замена бита ");
                 int choice = 0;
                 Entering_or_Convertation.UsersFalses(ref choice);
                 switch(choice)
@@ -1227,6 +1284,7 @@ namespace ConsoleApp15
             static void EnterTwoBytes(ref int firstNumber,ref int secondNumber)
             {
                 Console.WriteLine("Введите первое число");
+                
                 Entering_or_Convertation.UsersFalses(ref firstNumber);
                 Console.WriteLine("Введите второе число");                
                 Entering_or_Convertation.UsersFalses(ref secondNumber);
@@ -1255,11 +1313,52 @@ namespace ConsoleApp15
                 int result = firstNumber ^ secondNumber;
                 Result(result);
             }
+            static void Replacement()
+            {
+
+            }
             static void Result(int result)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
+                WhatYouWannaWatch(ref result);
                 Console.WriteLine("Результат операции равен "+result);
                 Console.ResetColor();
+            }
+            static void WhatYouWannaWatch(ref int result)
+            {
+                start:
+                Console.WriteLine("В какой системе счисления будет число? /n 1-В двоичной /n 2-В десятичной");
+                int choice = 0;
+                Entering_or_Convertation.UsersFalses(ref choice);
+                switch (choice)
+                {
+                    case 1:
+                     
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        FalseCondition();
+                        goto start; 
+                }
+            }
+            static string GoToBinary(int result)
+            {
+                string intermidiateResult = "";
+                while (result > 0)
+                {
+                    if (result % 2 == 1)
+                    {
+                        intermidiateResult = "1" + intermidiateResult;
+                    }
+                    else
+                    {
+                        intermidiateResult = "0" + intermidiateResult;
+                    }
+                    result /= 2;
+                }
+                //result = Convert.ToInt32(intermidiateResult);
+                return intermidiateResult;
             }
         }
         class Ranbow
@@ -1688,9 +1787,9 @@ namespace ConsoleApp15
                 return "";
             }
         }
-        class Entering_or_Convertation
+        public static class Entering_or_Convertation
         {
-            public Entering_or_Convertation()
+              static Entering_or_Convertation()
             {
 
             }
@@ -1812,6 +1911,16 @@ namespace ConsoleApp15
                 {
                     Console.WriteLine("All logs here" + Logs.Log);                    
                 }
+                else if (manual == "get" || manual == "пуе")
+                {
+                    string directory = "";
+                    UsersFalses(ref directory);
+                }
+                else if (manual=="add" || manual=="фвв")
+                {
+                    string directory = "";
+                    UsersFalses(ref directory);
+                }
                 else if (manual=="clear")
                 {
                     Console.Clear();
@@ -1874,18 +1983,18 @@ namespace ConsoleApp15
             Entering_or_Convertation.UsersFalses(ref answer);          
             string ans = answer.ToLower();
             
-            if (ans=="y"||ans=="н")
+            if (ans=="y" || ans=="н")
             {
                 string[] mass = new string[0];
                 Main(mass);
             }
-           
+            
             else if (ans=="n"||ans=="т")
             {
                 Environment.Exit(0);
             }            
             else
-           {
+            {
                 Tools.ControlValue();
                 goto start;
             }
@@ -2118,7 +2227,7 @@ namespace ConsoleApp15
                     }
                 }
                 static void ThreadHelper()
-                {                   
+                {
                     Thread.Sleep(15000);
                     Console.WriteLine("Вы не уложились в 15 секунд");
                     Viselica.Attempt--;
@@ -2149,41 +2258,20 @@ namespace ConsoleApp15
             }
         }
         
-        //при отличном значении в ветви switch-case не прописывать goto ,а просто перезапустить метод
-        static bool checkPalindrome(string inputString)
-        {
-            bool result = true;
-            //Console.WriteLine(inputString.Length-1);
-            //bool result = true;
-            //for (int counterFirst = 0, counterSecond = inputString.Length - 1; counterFirst != counterSecond && counterSecond - counterFirst != 1; counterFirst++, counterSecond--)
-            //{
-            //    Console.WriteLine(counterFirst + " " + counterSecond);
-            //    if (inputString[counterFirst] == inputString[counterSecond])
-            //    {
-            //        result = true;
-
-            //    }
-            //    else
-            //    {
-            //        result = false;
-            //        break;
-            //    }
-            //}
-            //return result;
-            for (int counterFirst = 0, counterSecond = inputString.Length - 1, checkTrue = inputString.Length ; checkTrue>0 ; counterFirst++, counterSecond--, checkTrue -= 2)
-            {
-                if (inputString[counterFirst]!=inputString[counterSecond])
-                {
-                    result = false;
-                    break;
-                }
-            }
-            return result;
-        }
-
-
+        //при отличном значении в ветви switch-case не прописывать goto ,а просто перезапустить метод       
 
     }
+    class FilesAndResults
+    {
+        public static List<string> Notes=new List<string>();
+        public FilesAndResults()
+        {
+            Console.WriteLine("");
+            string password = "";
+            UsersFalses(ref password);
+        }
+    }
+
 }
 /*ИДЕИ
  * 1-перевод из n системы счисления в r
